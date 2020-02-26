@@ -97,3 +97,8 @@
   flex-flow: column wrap;
   align-items: center;
 }
+.gif-content{
+    display: flex;
+    flex-flow: row wrap;
+    max-width: fit-content;
+}

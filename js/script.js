@@ -1,13 +1,17 @@
 let gifs = [];
 const api = "https://api.giphy.com/v1/gifs/";
 let botontest = document.getElementById("btn");
+let divContainer = document.getElementById("divContainer");
+let searchBar = document.getElementById("trend");
 botontest.addEventListener("click", event => {
   event.target;
   searchtext();
 });
 function searchtext() {
   let search = document.getElementById("search").value;
-  fetch(`${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=25&offset=0&rating=G&lang=en`)
+  fetch(
+    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=25&offset=0&rating=G&lang=en`
+  )
     .then(function(response) {
       return response.json();
     })
@@ -18,13 +22,13 @@ function searchtext() {
         //revisar esto, hacer refactory
         let newFrame = document.createElement("iframe");
         newFrame.setAttribute("src", gifs[i]);
-        document.body.appendChild(newFrame);
-        
+        document.body.appendChild(newFrame)
       }
     });
-    gifs = [];
-   let test= document.getElementById("barra");
-   console.log(test);
+    searchBar.innerHTML= search;
+
+  gifs = [];
+  let test = document.getElementById("barra");
 }
 /* document
   .querySelector("section div form button")
