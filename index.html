@@ -1,72 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GifOs</title>
-    <link rel="stylesheet" href="styles/style.css" />
-  </head>
 
-  <body class="background-color body-flex">
-    <header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GifOs</title>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body class="background-color body-flex">
+  <header>
+    <div>
+      <h1 class="top-bar letter-color">
+        ¡Bienvenidos/as a Guifos.com!Donde los gifs están.////// Número de
+        visitas:12.757.163
+      </h1>
+    </div>
+  </header>
+  <nav class="nav">
+    <div>
+      <img src="img/gifOF_logo.png" alt="Logo de GifOs" />
+    </div>
+    <div class="flex">
       <div>
-        <h1 class="top-bar">
-          ¡Bienvenidos/as a Guifos.com!Donde los gifs están.////// Número de
-          visitas:12.757.163
-        </h1>
-      </div>
-    </header>
-    <nav class="nav">
-      <div>
-        <img src="img/gifOF_logo.png" alt="Logo de GifOs" />
+        <button class="btn-windows98"> <a href="/gifOsv2/misGifOs/record.html"> Crear GifOs</a> </button>
       </div>
       <div class="flex">
-        <div>
-          <button class="btn-windows98">Crear Guifos</button>
-        </div>
-        <div class="flex">
-          <button class="btn-windows98">Crear Guifos</button>
-          <button class="btn-windows98 dropdown-arrow">
-            <img src="img/dropdown.svg" alt="Menu dropdown arrow" />
-          </button>
-        </div>
-        <div>
-          <a>Mis Guifos</a>
+        <button class="btn-windows98">Elegir Tema</button>
+        <button class="btn-windows98 dropdown-arrow">
+          <img src="img/dropdown.svg" alt="Menu dropdown arrow" />
+        </button>
+        <div hidden>
+          <button>Sailor Day</button>
+          <button>Sailor Night</button>
         </div>
       </div>
-    </nav>
-    <section>
-      <main class="flex-window">
-        <div class="windows-style">
-          <div class="window-bar">
-            <p class="margin-zero">Buscar:</p> 
-            <div class="flex padding-bar">
-              <input type="text" class="srch-bar" id="search" />
-              <button class="srch-btn" id="btn">
-                <img src="img/lupa_inactive.svg" alt="Lupa buscador" /> Buscar
-              </button>
-            </div>
+      <div>
+        <a href="/gifOsv2/misGifOs/record.html">Mis Guifos</a>
+      </div>
+    </div>
+  </nav>
+  <section>
+    <main class="flex-window">
+      <div class="windows-style">
+        <div class="window-bar">
+          <p class="margin-zero letter-color">Buscar:</p>
+          <div class="flex padding-bar">
+            <input type="text" class="srch-bar" id="search" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" />
+            <button class="srch-btn" id="btn">
+              <img src="img/lupa_inactive.svg" alt="Lupa buscador" /> Buscar
+            </button>
           </div>
         </div>
-      </main>
-    </section>
-    <section class="flex-trendings">
-      <div>
-        <input type="text" name="suggestions" id="suggestions" class="gnr-bar" disabled placeholder="Hoy te sugerimos:"/>
+      </div>
+    </main>
+  </section>
+  <section class="flex-trendings">
+    <div>
+      <input type="text" name="suggestions" id="suggestions" class="gnr-bar margin-flex" disabled
+        placeholder="Hoy te sugerimos:" />
         <div>
-            <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
-            <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
-            <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
-            <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
-        </div>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
+      </div>
       <div>
-        <input type="text" name="trend" id="trend" class="gnr-bar" disabled value="tendencias:">
+        <input type="text" name="trend" id="trend" class="gnr-bar margin-flex" disabled value="Tendencias:">
         <div class="gif-content" id="divContainer">
-       
-
         </div>
       </div>
-    </section>
-    <script src="js/script.js"></script>
-  </body>
+  </section>
+  <script src="js/script.js"></script>
+</body>
+
 </html>

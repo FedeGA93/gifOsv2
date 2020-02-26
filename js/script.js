@@ -1,16 +1,15 @@
 let gifs = [];
 const api = "https://api.giphy.com/v1/gifs/";
 let botontest = document.getElementById("btn");
-let divContainer = document.getElementById("divContainer");
-let searchBar = document.getElementById("trend");
 botontest.addEventListener("click", event => {
   event.target;
   searchtext();
 });
+
 function searchtext() {
   let search = document.getElementById("search").value;
   fetch(
-    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=25&offset=0&rating=G&lang=en`
+    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=8&offset=0&rating=G&lang=en`
   )
     .then(function(response) {
       return response.json();
@@ -22,16 +21,17 @@ function searchtext() {
         //revisar esto, hacer refactory
         let newFrame = document.createElement("iframe");
         newFrame.setAttribute("src", gifs[i]);
-        document.body.appendChild(newFrame)
+        document.getElementById("divContainer").appendChild(newFrame)
       }
     });
-    searchBar.innerHTML= search;
-
-  gifs = [];
-  let test = document.getElementById("barra");
+    document.getElementById("trend").value = search;
+    gifs = [];
 }
-/* document
-  .querySelector("section div form button")
-  .addEventListener("click", event => {
-    event.preventDefault();
-  }); */
+
+function darkMode() {
+  let element = document.body;
+  element.classList.toggle("dark");
+}
+
+
+   
