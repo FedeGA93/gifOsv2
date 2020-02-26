@@ -7,6 +7,7 @@
   <title>GifOs</title>
   <link rel="stylesheet" href="styles/style.css" />
 </head>
+
 <body class="background-color body-flex">
   <header>
     <div>
@@ -21,21 +22,21 @@
       <img src="img/gifOF_logo.png" alt="Logo de GifOs" />
     </div>
     <div class="flex">
-      <div>
-        <button class="btn-windows98"> <a href="/gifOsv2/misGifOs/record.html"> Crear GifOs</a> </button>
+      <div class="pad-right">
+        <button class="btn-windows98 "> <a href="/gifOsv2/misGifOs/record.html"> Crear GifOs</a> </button>
       </div>
-      <div class="flex">
-        <button class="btn-windows98">Elegir Tema</button>
+      <div class="flex dropdown pad-right">
+        <button class="btn-windows98 ">Elegir Tema</button>
         <button class="btn-windows98 dropdown-arrow">
           <img src="img/dropdown.svg" alt="Menu dropdown arrow" />
         </button>
-        <div hidden>
-          <button>Sailor Day</button>
-          <button>Sailor Night</button>
+        <div class="dropdown-content test">
+          <button class="btn-theme" id="light-theme">Sailor Day</button>
+          <button class="btn-theme dark-theme" id="dark-theme">Sailor Night</button>
         </div>
       </div>
-      <div>
-        <a href="/gifOsv2/misGifOs/record.html">Mis Guifos</a>
+      <div class="my-gifs">
+        <a class="anchors-norm" href="/gifOsv2/misGifOs/record.html"> <u>M</u>is Guifos</a>
       </div>
     </div>
   </nav>
@@ -43,11 +44,12 @@
     <main class="flex-window">
       <div class="windows-style">
         <div class="window-bar">
-          <p class="margin-zero letter-color">Buscar:</p>
+          <p class="margin-zero letter-color letter">Buscar:</p>
           <div class="flex padding-bar">
-            <input type="text" class="srch-bar" id="search" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" />
+            <input type="text" class="srch-bar" id="search"
+              placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" />
             <button class="srch-btn" id="btn">
-              <img src="img/lupa_inactive.svg" alt="Lupa buscador" /> Buscar
+              <img src="img/lupa_inactive.svg" alt="Lupa buscador"/> Buscar
             </button>
           </div>
         </div>
@@ -58,11 +60,11 @@
     <div>
       <input type="text" name="suggestions" id="suggestions" class="gnr-bar margin-flex" disabled
         placeholder="Hoy te sugerimos:" />
-        <div>
-        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
-        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
-        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
-        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe>
+      <div>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe><button class="btn-more">Ver más</button>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe><button class="btn-more">Ver más</button>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe><button class="btn-more">Ver más</button>
+        <iframe src="https://giphy.com/embed/rAm0u2k17rM3e" frameborder="0"></iframe><button class="btn-more">Ver más</button>
       </div>
       <div>
         <input type="text" name="trend" id="trend" class="gnr-bar margin-flex" disabled value="Tendencias:">

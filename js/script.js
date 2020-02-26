@@ -11,10 +11,10 @@ function searchtext() {
   fetch(
     `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=8&offset=0&rating=G&lang=en`
   )
-    .then(function(response) {
+    .then(function (response) {
       return response.json();
     })
-    .then(function(myJson) {
+    .then(function (myJson) {
       console.log(myJson);
       for (let i = 0; i < myJson.data.length; i++) {
         gifs.push(myJson.data[i].embed_url);
@@ -24,8 +24,9 @@ function searchtext() {
         document.getElementById("divContainer").appendChild(newFrame)
       }
     });
-    document.getElementById("trend").value = search;
-    gifs = [];
+  document.getElementById("trend").value = search;
+  gifs = [];
+  document.getElementById("trend").scrollIntoView();
 }
 
 function darkMode() {
@@ -34,4 +35,3 @@ function darkMode() {
 }
 
 
-   
