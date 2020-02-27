@@ -1,6 +1,7 @@
 let gifs = [];
 const api = "https://api.giphy.com/v1/gifs/";
 let botontest = document.getElementById("btn");
+const searchBar = document.querySelector('input[type="text"}]');
 botontest.addEventListener("click", event => {
   event.target;
   searchtext();
@@ -33,5 +34,7 @@ function darkMode() {
   let element = document.body;
   element.classList.toggle("dark");
 }
+
+function src()
 
 
