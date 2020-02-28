@@ -241,3 +241,10 @@ input:focus~#btn {
   line-height: 18px;
   text-decoration:none;
 }
+.padding-input{
+  padding-left: 1em;
+}
+.anch{
+  text-decoration: none;
+  color: black;
+}
