@@ -1,7 +1,7 @@
 let gifs = [];
 const api = "https://api.giphy.com/v1/gifs/";
 let botontest = document.getElementById("btn");
-const searchBar = document.querySelector('input[type="text"}]');
+const searchBar = document.querySelector('input[type="text"]');
 botontest.addEventListener("click", event => {
   event.target;
   searchtext();
@@ -22,10 +22,6 @@ function searchtext() {
   document.getElementById("trend").scrollIntoView();
 }
 
-function darkMode() {
-  let element = document.body;
-  element.classList.toggle("dark");
-}
 const populateContainer = container =>
 function caspsule(myJson) {
   for (let i = 0; i < myJson.data.length; i++) {
@@ -51,4 +47,8 @@ function trends() {
   document.getElementById("trend").value = search;
   gifs = [];
   document.getElementById("trend").scrollIntoView();
+}
+function classToggle() {
+ const prueba= document.getElementsByClassName("window-bar").classList.add("dark")
+ console.log(prueba);
 }
