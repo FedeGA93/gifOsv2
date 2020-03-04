@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Chakra+Petch:400,700&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Chakra+Petch:400,700&display=swap");
 * {
   padding: 0;
   box-sizing: border-box;
   border: 0;
-  font-family: 'Chakra Petch', regular;
+  font-family: "Chakra Petch";
 }
 
 .body-flex {
@@ -12,16 +12,11 @@
 }
 
 .letter-color {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .background-color {
   background-color: #fffafe;
-}
-
-.dark-mode {
-  background-color: black;
-  color: white;
 }
 
 .flex {
@@ -75,7 +70,7 @@
 .letter {
   font-family: "ChakraPetch", Bold;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   letter-spacing: 0;
 }
 
@@ -95,15 +90,15 @@
   height: 2.6em;
 }
 
-input:focus~#btn {
-  background: #F7C9F3;
+input:focus ~ #btn {
+  background: #f7c9f3;
   border: 1px solid #110038;
 }
 
 .srch-btn:active {
-  background: #E6BBE2;
+  background: #e6bbe2;
   border: 1px solid #110038;
-  box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+  box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
 }
 
 .gnr-bar {
@@ -112,6 +107,7 @@ input:focus~#btn {
   box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d;
   height: 2.3em;
   width: 64.7vw;
+  color: #000000;
 }
 
 .windows-style {
@@ -179,29 +175,29 @@ input:focus~#btn {
   display: flex;
 }
 
-.test {
+.btn-depl {
   display: none;
   flex-flow: column;
   align-items: center;
   height: 4.6em;
   width: 11.3em;
-  background: #E6E6E6;
-  box-shadow: inset -2px -2px 0 0 #B4B4B4, inset 2px 2px 0 0 #FFFFFF;
+  background: #e6e6e6;
+  box-shadow: inset -2px -2px 0 0 #b4b4b4, inset 2px 2px 0 0 #ffffff;
   margin-top: 2.2em;
 }
 
 .btn-theme {
-  background: #F0F0F0;
+  background: #f0f0f0;
   border: 1px solid #808080;
-  box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+  box-shadow: inset -1px -1px 0 0 #b4b4b4, inset 1px 1px 0 0 #ffffff;
   width: 150px;
   height: 36px;
 }
 
 .btn-theme:active {
-  background: #FFF4FD;
-  border: 1px solid #CCA6C9;
-  box-shadow: inset -1px -1px 0 0 #E6DCE4, inset 1px 1px 0 0 #FFFFFF;
+  background: #fff4fd;
+  border: 1px solid #cca6c9;
+  box-shadow: inset -1px -1px 0 0 #e6dce4, inset 1px 1px 0 0 #ffffff;
 }
 
 .btn-more {
@@ -210,13 +206,13 @@ input:focus~#btn {
   right: 18em;
   position: relative;
   bottom: 1em;
-  background: #4180F6;
-  border: 1px solid #4C2F99;
-  box-shadow: inset -2px -2px 0 0 #284F99, inset 2px 2px 0 0 #FFFFFF;
-  height: 2em;
-  width: 4.2em;
+  background: #4180f6;
+  border: 1px solid #4c2f99;
+  box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
+  height: 34px;
+  width: 81px;
   font-size: 14px;
-  color: #FFFFFF;
+  color: #ffffff;
   letter-spacing: 0;
   text-align: center;
   line-height: 18px;
@@ -233,22 +229,50 @@ input:focus~#btn {
 .anchors-norm:active {
   color: #110038;
 }
-.anchors-norm{
+.anchors-norm {
   font-family: "ChakraPetch", Regular;
   font-size: 16px;
   color: #110038;
   letter-spacing: 0;
   line-height: 18px;
-  text-decoration:none;
+  text-decoration: none;
 }
-.padding-input{
+.padding-input {
   padding-left: 1em;
 }
-.anch{
+.anch {
   text-decoration: none;
   color: black;
 }
 
-.dark{
-  background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
+.background-color.dark {
+  background: #110038;
+}
+.btn-windows98.dark {
+  color: #ffffff;
+  background: #ee3efe;
+  border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #a72cb3, inset 1px 1px 0 0 #ffffff;
+}
+.btn-windows98:hover.dark {
+  background: #ce36db;
+  border: 1px solid #110038;
+  box-shadow: inset -1px -1px 0 0 #a72cb3, inset 1px 1px 0 0 #ffffff;
+}
+
+.btn-depl.dark {
+  background: #b4b4b4;
+}
+
+.btn-theme:active.dark {
+  color: #ffffff;
+  background: #2e32fb;
+  border: 1px solid rgba(51, 53, 143, 0.2);
+  box-shadow: inset -1px -1px 0 0 #e6dce4, inset 1px 1px 0 0 #ffffff;
+}
+
+.btn-more.dark {
+  background: #2e32fb;
+  border: 1px solid #4c2f99;
+  box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
 }

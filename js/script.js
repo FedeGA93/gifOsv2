@@ -23,15 +23,15 @@ function searchtext() {
 }
 
 const populateContainer = container =>
-function caspsule(myJson) {
-  for (let i = 0; i < myJson.data.length; i++) {
-    gifs.push(myJson.data[i].embed_url);
-    //revisar esto, hacer refactory
-    let newFrame = document.createElement("iframe");
-    newFrame.setAttribute("src", gifs[i]);
-    document.getElementById(container).appendChild(newFrame);
-  }
-}
+  function caspsule(myJson) {
+    for (let i = 0; i < myJson.data.length; i++) {
+      gifs.push(myJson.data[i].embed_url);
+      //revisar esto, hacer refactory
+      let newFrame = document.createElement("iframe");
+      newFrame.setAttribute("src", gifs[i]);
+      document.getElementById(container).appendChild(newFrame);
+    }
+  };
 function trends() {
   fetch(
     `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
@@ -48,7 +48,12 @@ function trends() {
   gifs = [];
   document.getElementById("trend").scrollIntoView();
 }
+let all;
 function classToggle() {
- const prueba= document.getElementsByClassName("window-bar").classList.add("dark")
- console.log(prueba);
+  all = document.getElementsByTagName("*")
+  for (let i = 0; i < all.length; i++) {
+    all[i].classList.add("dark");
+  }
+  document.getElementById("logo").src = "/img/gifOF_logo_dark.png";
+  document.getElementById("arrow").src = "/img/forward.svg"
 }
