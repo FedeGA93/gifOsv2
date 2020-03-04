@@ -55,5 +55,11 @@ function classToggle() {
     all[i].classList.add("dark");
   }
   document.getElementById("logo").src = "/img/gifOF_logo_dark.png";
-  document.getElementById("arrow").src = "/img/forward.svg"
+}
+function classDelete() {
+  all = document.getElementsByTagName("*");
+  for (let i = 0; i < all.length; i++) {
+    all[i].classList.remove("dark");
+  }
+  document.getElementById("logo").src = "/img/gifOF_logo.png";
 }
