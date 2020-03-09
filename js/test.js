@@ -1,53 +1,55 @@
-let btnRecord = document.getElementById("btn-record");
-btnRecord.addEventListener("click", event => {
-    event.target;
-    getStreamAndRecord();
-})
-const video = document.querySelector('video');
+const video = document.querySelector("video");
 
 async function stopRecordingCallback() {
-    video.srcObject = null;
-    let blob = await recorder.getBlob();
-    video.src = URL.createObjectURL(blob);
-    recorder.stream.getTracks(t => t.stop());
+  video.srcObject = null;
+  let blob = await recorder.getBlob();
+  video.src = URL.createObjectURL(blob);
+  recorder.stream.getTracks(t => t.stop());
 
-    // reset recorder's state
-    await recorder.reset();
+  // reset recorder's state
+  await recorder.reset();
 
-    // clear the memory
-    await recorder.destroy();
+  // clear the memory
+  await recorder.destroy();
 
-    // so that we can record again
-    recorder = null;
+  // so that we can record again
+  recorder = null;
 }
 
 let recorder; // globally accessible
 
-document.getElementById('btn-start-recording').onclick = async function() {
-    this.disabled = true;
-    let stream = await navigator.mediaDevices.getUserMedia({video: true, audio: true});
-    video.srcObject = stream;
-    recorder = new RecordRTCPromisesHandler(stream, {
-        type: 'video'
-    });
-    await recorder.startRecording();
+document.getElementById("btn-start-recording").onclick = async function() {
+  this.disabled = true;
+  let stream = await navigator.mediaDevices.getUserMedia({
+    video: true,
+    audio: false
+  });
+  video.srcObject = stream;
+  recorder = new RecordRTCPromisesHandler(stream, {
+    type: "video",
+    frameRate: 1,
+    quality: 10,
+    width: 360,
+    hidden: 240
     
-    // helps releasing camera on stopRecording
-    recorder.stream = stream;
+  });
+  await recorder.startRecording();
 
-    document.getElementById('btn-stop-recording').disabled = false;
+  // helps releasing camera on stopRecording
+  recorder.stream = stream;
 
-    // if you want to access internal recorder
-    const internalRecorder = await recorder.getInternalRecorder();
-    console.log('internal-recorder', internalRecorder.name);
+  document.getElementById("btn-stop-recording").disabled = false;
+  // if you want to access internal recorder
+  const internalRecorder = await recorder.getInternalRecorder();
+  console.log("internal-recorder", internalRecorder.name);
 
-    // if you want to read recorder's state
-    console.log('recorder state: ', await recorder.getState());
+  // if you want to read recorder's state
+  console.log("recorder state: ", await recorder.getState());
 };
 
-document.getElementById('btn-stop-recording').onclick = async function() {
-    this.disabled = true;
-    await recorder.stopRecording();
-    stopRecordingCallback();
-    document.getElementById('btn-start-recording').disabled = false;
+document.getElementById("btn-stop-recording").onclick = async function() {
+  this.disabled = true;
+  await recorder.stopRecording();
+  stopRecordingCallback();
+  document.getElementById("btn-start-recording").disabled = false;
 };

@@ -25,32 +25,26 @@
             <p>
               Crear tu guifo es muy fácil, graba cualquier imagen con tu cámara
               y obtén guifos personalizados. Los pasos para crear tu guifo son:
-              <br/>
+              <br />
               <b>1)</b> Dar permisos de acceso a la cámara (sólo por el tiempo
-              de uso) <br/>
-              <b>2)</b> Capturar tu momento guifo <br/>
-              <b>3)</b> Revisar el momento <br/>
-              <b>4)</b> Listo para subir y compartir! <br/>
+              de uso) <br />
+              <b>2)</b> Capturar tu momento guifo <br />
+              <b>3)</b> Revisar el momento <br />
+              <b>4)</b> Listo para subir y compartir! <br />
               ¿Quieres comenzar a crear tu guifo ahora?
             </p>
           </div>
+          <div>
+            <button id="btn-start-recording">Start Recording</button>
+            <button id="btn-stop-recording" disabled>Stop Recording</button>
+          </div>
         </div>
-        <button id="btn-record">Grabar</button>
       </div>
     </section>
     <section>
-      <title>Promises and RecordRTC</title>
-<h1>Promises and RecordRTC</h1>
-
-<br>
-<button id="btn-start-recording">Start Recording</button>
-<button id="btn-stop-recording" disabled>Stop Recording</button>
-
-<hr>
-<video controls autoplay playsinline></video>
-
+      <video controls autoplay playsinline class="video"></video>
     </section>
     <script src="/js/test.js"></script>
-    <script src="https://www.webrtc-experiment.com/common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
   </body>
 </html>

@@ -6,9 +6,11 @@ botontest.addEventListener("click", event => {
   event.target;
   searchtext();
 });
+let searches = document.getElementById("search").value;
 
 function searchtext() {
   let search = document.getElementById("search").value;
+
   fetch(
     `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=8&offset=0&rating=G&lang=en`
   )
@@ -19,7 +21,7 @@ function searchtext() {
   newFrame = "";
   document.getElementById("trend").value = search;
   gifs = [];
-  document.getElementById("trend").scrollIntoView();
+  saveSearchs();
 }
 
 const populateContainer = container =>
@@ -34,23 +36,18 @@ const populateContainer = container =>
   };
 function trends() {
   fetch(
-    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
+    `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
   )
     .then(function(response) {
       return response.json();
     })
-    .then(function(myJson) {
-      console.log(myJson);
-      caspsule(myJson);
-    });
+    .then(populateContainer("divContainer"));
   newFrame = "";
-  document.getElementById("trend").value = search;
   gifs = [];
-  document.getElementById("trend").scrollIntoView();
 }
 let all;
 function classToggle() {
-  all = document.getElementsByTagName("*")
+  all = document.getElementsByTagName("*");
   for (let i = 0; i < all.length; i++) {
     all[i].classList.add("dark");
   }
@@ -62,4 +59,21 @@ function classDelete() {
     all[i].classList.remove("dark");
   }
   document.getElementById("logo").src = "/img/gifOF_logo.png";
+}
+trends();
+
+let arrayBtn = [];
+const set = new Set();
+function saveSearchs(searches) {
+  const searchInput = document.getElementById("search").value;
+  const father = document.querySelector(".hashtags");
+  const buttonHash = document.createElement("button");
+  buttonHash.classList.add("btn-hash");
+  father.appendChild(buttonHash);
+  set.add(searchInput);
+  arrayBtn = Array.from(set);
+  console.log(arrayBtn);
+  arrayBtn.forEach(item => {
+    buttonHash.innerHTML = "#" + item;
+  });
 }

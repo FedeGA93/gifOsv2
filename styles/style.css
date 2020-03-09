@@ -199,7 +199,18 @@ input:focus ~ #btn {
   border: 1px solid #cca6c9;
   box-shadow: inset -1px -1px 0 0 #e6dce4, inset 1px 1px 0 0 #ffffff;
 }
-
+.btn-hash{
+  background: #4180f6;
+  border: 1px solid #4c2f99;
+  box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
+  height: 34px;
+  width: 81px;
+  font-size: 14px;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 18px;
+}
 .btn-more {
   margin: 0;
   padding: 0;
@@ -275,4 +286,8 @@ input:focus ~ #btn {
   background: #2e32fb;
   border: 1px solid #4c2f99;
   box-shadow: inset -2px -2px 0 0 #2124b3, inset 2px 2px 0 0 #ffffff;
+}
+
+.video{
+  display: none;
 }
