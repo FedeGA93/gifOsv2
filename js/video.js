@@ -16,8 +16,7 @@ async function stopRecordingCallback() {
 let recorder; // globally accessible
 
 document.getElementById("btn-start-recording").addEventListener("click", async function() {
-  document.getElementById("video").classList.remove("hide");
-  document.getElementById("text-box").classList.add("hide")
+    videoLayout();
     this.disabled = true;
     let stream = await navigator.mediaDevices.getUserMedia({
       video: true,
@@ -41,7 +40,7 @@ document.getElementById("btn-start-recording").addEventListener("click", async f
     // if you want to read recorder's state
     console.log("recorder state: ", await recorder.getState());
     document.getElementById("btn-stop-recording").addEventListener("click", async function() {
-      document.getElementById("video").classList.add("hide");
+        menuLayout()
         this.disabled = true;
         await recorder.stopRecording();
         stopRecordingCallback();
@@ -64,3 +63,18 @@ document.getElementById("light-theme").addEventListener("click", function classD
   }
   document.getElementById("logo").src = "/img/gifOF_logo.png";
 });
+
+function videoLayout() {
+  document.getElementById("video").classList.remove("hide");
+  document.getElementById("text-box").classList.add("hide");
+  document.getElementById("myGifos-bar").classList.add("hide");
+  document.getElementById("window-txt").innerHTML="Un Chequeo Antes de Empezar";
+  document.getElementById("windowContainer").classList.remove("square-windows");
+  document.getElementById("windowContainer").classList.add("newSize");
+}
+
+function menuLayout() {
+  document.getElementById("video").classList.add("hide");
+  document.getElementById("text-box").classList.remove("hide");
+  document.getElementById("myGifos-bar").classList.remove("hide");
+}

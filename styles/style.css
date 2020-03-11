@@ -58,14 +58,7 @@
   border: 1px solid #110038;
 }
 
-.dropdown-arrow {
-  height: 36px;
-  width: 36px;
-}
 
-.dropdown-arrow:active {
-  color: #110038;
-}
 
 .letter {
   font-family: "ChakraPetch", Bold;
@@ -316,8 +309,9 @@ height: 36px;
 }
 
 .container-video-btn{
-  display: flex;
+    display: flex;
     justify-content: flex-end;
+    align-items: flex-end;
 }
 
 .center-items{
@@ -326,4 +320,21 @@ height: 36px;
 }
 .hide{
   display: none;
+}
+.margin-btn{
+  margin-left: auto;
+}
+.img-btn {
+  height: 36px;
+  width: 36px;
+}
+
+.img-btn:active {
+  color: #110038;
+}
+
+.newSize{
+  display: flex;
+  width: 41em;
+  height: 35em;
 }
