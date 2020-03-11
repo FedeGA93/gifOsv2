@@ -16,6 +16,8 @@ async function stopRecordingCallback() {
 let recorder; // globally accessible
 
 document.getElementById("btn-start-recording").addEventListener("click", async function() {
+  document.getElementById("video").classList.remove("hide");
+  document.getElementById("text-box").classList.add("hide")
     this.disabled = true;
     let stream = await navigator.mediaDevices.getUserMedia({
       video: true,
@@ -39,9 +41,26 @@ document.getElementById("btn-start-recording").addEventListener("click", async f
     // if you want to read recorder's state
     console.log("recorder state: ", await recorder.getState());
     document.getElementById("btn-stop-recording").addEventListener("click", async function() {
+      document.getElementById("video").classList.add("hide");
         this.disabled = true;
         await recorder.stopRecording();
         stopRecordingCallback();
         document.getElementById("btn-start-recording").disabled = false;
       });
   });
+
+  let all;
+document.getElementById("dark-theme").addEventListener("click", function classToggle() {
+  all = document.getElementsByTagName("*");
+  for (let i = 0; i < all.length; i++) {
+    all[i].classList.add("dark");
+  }
+  document.getElementById("logo").src = "/img/gifOF_logo_dark.png";
+});
+document.getElementById("light-theme").addEventListener("click", function classDelete() {
+  all = document.getElementsByTagName("*");
+  for (let i = 0; i < all.length; i++) {
+    all[i].classList.remove("dark");
+  }
+  document.getElementById("logo").src = "/img/gifOF_logo.png";
+});

@@ -147,6 +147,7 @@ input:focus ~ #btn {
   display: flex;
   flex-flow: row wrap;
   max-width: fit-content;
+  padding-left: 9em;
 }
 
 .margin-flex {
@@ -248,12 +249,21 @@ input:focus ~ #btn {
   line-height: 18px;
   text-decoration: none;
 }
+.anchors-norm.dark{
+  color: #FFFFFF;
+
+}
 .padding-input {
   padding-left: 1em;
 }
 .anch {
   text-decoration: none;
   color: black;
+  display: block;
+}
+.anch.dark{
+  color: #FFFFFF;
+
 }
 
 .background-color.dark {
@@ -289,5 +299,31 @@ input:focus ~ #btn {
 }
 
 .video{
+  display: none;
+}
+
+.btn-video{
+  background: #F7C9F3;
+border: 1px solid #110038;
+box-shadow: inset -1px -1px 0 0 #997D97, inset 1px 1px 0 0 #FFFFFF;
+width: 144px;
+height: 36px;
+
+}
+
+.btn-video:disabled{
+  background: #FFF4FD;
+}
+
+.container-video-btn{
+  display: flex;
+    justify-content: flex-end;
+}
+
+.center-items{
+  display: flex;
+  justify-content: center;
+}
+.hide{
   display: none;
 }

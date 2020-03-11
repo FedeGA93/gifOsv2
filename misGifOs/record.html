@@ -7,20 +7,39 @@
     <link rel="stylesheet" href="/styles/style.css" />
   </head>
 
-  <body class="body-flex">
-    <nav>
-      <a href="/index.html"> <img src="/img/arrow.svg" alt=""/></a>
-
-      <img src="/img/gifOF_logo.png" alt="Logo GifOS" />
+  <body class="body-flex background-color">
+    <nav class="nav">
+      <div>
+        
+        <a href="/index.html"><img src="/img/arrow.svg" alt="Flecha pra volver atrás"></a>
+        <img src="/img/gifOF_logo.png" id="logo" alt="Logo de GifOs" />
+      </div>
+      <div class="flex">
+         <div class="flex dropdown pad-right">
+          <button class="btn-windows98">Elegir Tema</button>
+          <button class="btn-windows98 dropdown-arrow">
+            <img src="/img/dropdown.svg" id="arrow" alt="Menu dropdown arrow" />
+          </button>
+          <div class="dropdown-content btn-depl">
+            <button class="btn-theme" id="light-theme">Sailor Day</button>
+            <button class="btn-theme" id="dark-theme">Sailor Night</button>
+          </div>
+        </div>
+      </div>
     </nav>
-    <section>
+    <section class="menu-window center-items">
       <div class="windows-style square-windows">
         <div class="window-bar">
           <p class="margin-zero letter-color letter">Crear Guifos</p>
-          <div>
-            <div>
+          <div id="text-box">
+          <div class="padding-input" >
+            <div class="flex">
+              <div>
               <img src="/img/window img.png" alt="Imagen de windows" />
-              <p><b>Aquí podrás crear tus propios guifos</b></p>
+            </div>
+              <div>
+                </div> <p><b>Aquí podrás crear tus propios guifos</b></p>
+            </div>
             </div>
             <p>
               Crear tu guifo es muy fácil, graba cualquier imagen con tu cámara
@@ -31,20 +50,27 @@
               <b>2)</b> Capturar tu momento guifo <br />
               <b>3)</b> Revisar el momento <br />
               <b>4)</b> Listo para subir y compartir! <br />
-              ¿Quieres comenzar a crear tu guifo ahora?
+              ¿Quieres comenzar a crear tu <b>guifo</b> ahora?
             </p>
+          <div class="container-video-btn">
+            <button id="btn-stop-recording" disabled class="btn-video">Cancelar</button>
+            <button id="btn-start-recording" class="btn-video">comenzar</button>
           </div>
-          <div>
-            <button id="btn-start-recording">Start Recording</button>
-            <button id="btn-stop-recording" disabled>Stop Recording</button>
           </div>
         </div>
       </div>
+      </div>
+    </section>
+    <section class="video-window center-items hide" id="video">
+      <video controls autoplay playsinline></video>
     </section>
     <section>
-      <video controls autoplay playsinline ></video>
+      <div>
+        <input type="text" class="gnr-bar margin-flex padding-input" disabled placeholder="Mis Guifos:" />
+        <div>
     </section>
     <script src="/js/video.js"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
   </body>
 </html>

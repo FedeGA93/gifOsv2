@@ -20,19 +20,19 @@ function searchtext() {
     .then(populateContainer("divContainer"));
   newFrame = "";
   document.getElementById("trend").value = search;
-  gifs = [];
   saveSearchs();
 }
 
+let newframe;
 const populateContainer = container =>
   function caspsule(myJson) {
-    for (let i = 0; i < myJson.data.length; i++) {
-      gifs.push(myJson.data[i].embed_url);
-      //revisar esto, hacer refactory
-      let newFrame = document.createElement("iframe");
-      newFrame.setAttribute("src", gifs[i]);
-      document.getElementById(container).appendChild(newFrame);
-    }
+    myJson.data.forEach(data => gifs.push(data.embed_url));
+    gifs.forEach(element => {
+      (newFrame = document.createElement("iframe")),
+        newFrame.setAttribute("src", element),
+        document.getElementById(container).appendChild(newFrame);
+      gifs = [];
+    });
   };
 function trends() {
   fetch(
@@ -42,24 +42,22 @@ function trends() {
       return response.json();
     })
     .then(populateContainer("divContainer"));
-  newFrame = "";
-  gifs = [];
 }
 let all;
-function classToggle() {
+document.getElementById("dark-theme").addEventListener("click", function classToggle() {
   all = document.getElementsByTagName("*");
   for (let i = 0; i < all.length; i++) {
     all[i].classList.add("dark");
   }
   document.getElementById("logo").src = "/img/gifOF_logo_dark.png";
-}
-function classDelete() {
+});
+document.getElementById("light-theme").addEventListener("click", function classDelete() {
   all = document.getElementsByTagName("*");
   for (let i = 0; i < all.length; i++) {
     all[i].classList.remove("dark");
   }
   document.getElementById("logo").src = "/img/gifOF_logo.png";
-}
+});
 trends();
 
 let arrayBtn = [];
