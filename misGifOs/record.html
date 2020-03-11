@@ -58,12 +58,23 @@
         </section>
         <section class="video-window center-items hide flex" id="video">
              <div>
-                  <video controls autoplay playsinline></video>
+                  <video  autoplay playsinline controls></video>
              </div>
              <div class="container-video-btn margin-btn">
+               <div id="btn-record">
                  <button class="btn-video img-btn"> <img src="/Acámica/gifOsv2/img/camera_light.svg" alt="Camara"></button>
-                  <button class="btn-video">Capturar</button>
-            </div>
+                  <button class="btn-video" >Capturar</button>
+                </div>
+                  <div id="btn-save" class="hide">
+                    <input type="text" id="time-input" value="" disabled>
+                    <button class="btn-video img-btn"><img src="/Acámica/gifOsv2/img/recording.svg" alt="Comenzar a grabar"></button>
+                    <button class="btn-video">Listo</button>
+                  </div>
+                  <div class="hide" id="final-step">
+                    <button class="btn-video">Repetir Captura</button>
+                    <button class="btn-video">Subir Guifo</button>
+                  </div>
+             </div>
         </section>
         </div>
       </div>
