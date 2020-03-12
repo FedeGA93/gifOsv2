@@ -5,13 +5,17 @@ async function stopRecordingCallback() {
   let blob = await recorder.getBlob();
   video.src = URL.createObjectURL(blob);
   recorder.stream.getTracks(t => t.stop());
-  /* // reset recorder's state
-  await recorder.reset();
-  // clear the memory
-  await recorder.destroy();
-  // so that we can record again
-  recorder = null; */
-  document.getElementById("upload").addEventListener("click", () => {
+
+  document.getElementById("repeat").addEventListener("click", async function() {
+    await recorder.reset();
+    await recorder.destroy();
+    recorder = null;
+    clearLayout();
+    videoLayout();
+    newFunc();
+  });
+
+  /*  document.getElementById("upload").addEventListener("click", () => {
     const formData = new FormData();
     formData.append("username","federicogomezavalos")
     formData.append("file", blob, "myGif.gif");
@@ -23,13 +27,40 @@ async function stopRecordingCallback() {
     xhr.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
         const gifObject = JSON.parse(xhr.response);
+      }try {
         xhr.send(formData);
+      } catch (e) {
+        alert('Error al enviar el gif:' + e);
       }
     };
+  }); */
+
+  document.getElementById("upload").addEventListener("click", () => {
+    
+    let formData = new FormData();
+    formData.append("file", blob, "myGif.gif");
+    console.log(formData.get("file"));
+    let req = new Request(uploadURL, {
+      method: "POST",
+      headers: new Headers(),
+      mode: "no-cors",
+      body: formData,
+      username: "fedegomezavalos",
+      type: "video/webm"
+    }, true);
+    console.log(req)
+    fetch(req)
+      .then(response => {
+        console.log("Response received from server " + response);
+      })
+      .catch(err => {
+        console.log("ERROR:", err.message);
+      });
   });
 }
-
-document.getElementById("btn-start-recording").addEventListener("click", async function() {
+document
+  .getElementById("btn-start-recording")
+  .addEventListener("click", async function newFunc() {
     videoLayout();
     this.disabled = true;
     let stream = await navigator.mediaDevices.getUserMedia({
@@ -38,13 +69,15 @@ document.getElementById("btn-start-recording").addEventListener("click", async f
     });
     video.srcObject = stream;
     recorder = new RecordRTCPromisesHandler(stream, {
-      type: "video",
+      type: 'gif',
       frameRate: 1,
       quality: 10,
       width: 360,
-      hidden: 240
+      hidden: 240,
     });
-    document.getElementById("btn-record").addEventListener("click", async function() {
+    document
+      .getElementById("btn-record")
+      .addEventListener("click", async function recordFunc() {
         midStep();
         await recorder.startRecording();
         // helps releasing camera on stopRecording
@@ -55,7 +88,9 @@ document.getElementById("btn-start-recording").addEventListener("click", async f
         console.log("internal-recorder", internalRecorder.name);
         // if you want to read recorder's state
         console.log("recorder state: ", await recorder.getState());
-        document.getElementById("btn-save").addEventListener("click", async function() {
+        document
+          .getElementById("btn-save")
+          .addEventListener("click", async function() {
             await recorder.stopRecording();
             recorder.stream.getTracks(t => t.stop());
             finalStep();
@@ -64,14 +99,18 @@ document.getElementById("btn-start-recording").addEventListener("click", async f
   });
 
 let all;
-document.getElementById("dark-theme").addEventListener("click", function classToggle() {
+document
+  .getElementById("dark-theme")
+  .addEventListener("click", function classToggle() {
     all = document.getElementsByTagName("*");
     for (let i = 0; i < all.length; i++) {
       all[i].classList.add("dark");
     }
     document.getElementById("logo").src = "/img/gifOF_logo_dark.png";
   });
-document.getElementById("light-theme").addEventListener("click", function classDelete() {
+document
+  .getElementById("light-theme")
+  .addEventListener("click", function classDelete() {
     all = document.getElementsByTagName("*");
     for (let i = 0; i < all.length; i++) {
       all[i].classList.remove("dark");
@@ -107,5 +146,10 @@ function finalStep() {
   document.getElementById("final-step").classList.add("btn-flex");
   stopRecordingCallback();
 }
+function clearLayout() {
+  document.getElementById("final-step").classList.remove("btn-flex");
+  document.getElementById("final-step").classList.add("hide");
+}
 
-const uploadURL ="http://upload.giphy.com/v1/gifs?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR";
+const uploadURL =
+  "http://upload.giphy.com/v1/gifs?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR";

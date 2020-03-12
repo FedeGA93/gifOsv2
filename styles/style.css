@@ -341,3 +341,8 @@ height: 36px;
 .btn-flex{
 display: flex;
 }
+
+.video-size{
+  height: 480px;
+  width: 640px;
+}

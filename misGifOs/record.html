@@ -4,20 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video</title>
-    <link rel="stylesheet" href="/Acámica/gifOsv2/styles/style.css" />
+    <link rel="stylesheet" href="/styles/style.css" />
   </head>
 
   <body class="body-flex background-color">
     <nav class="nav">
       <div>
-        <a href="/index.html"><img src="/Acámica/gifOsv2/img/arrow.svg" alt="Flecha pra volver atrás"></a>
-        <img src="/Acámica/gifOsv2/img/gifOF_logo.png" id="logo" alt="Logo de GifOs" />
+        <a href="/index.html"><img src="/img/arrow.svg" alt="Flecha pra volver atrás"></a>
+        <img src="/img/gifOF_logo.png" id="logo" alt="Logo de GifOs" />
       </div>
       <div class="flex">
          <div class="flex dropdown pad-right">
           <button class="btn-windows98">Elegir Tema</button>
           <button class="btn-windows98 img-btn">
-            <img src="/Acámica/gifOsv2/img/dropdown.svg" id="arrow" alt="Menu dropdown arrow" />
+            <img src="/img/dropdown.svg" id="arrow" alt="Menu dropdown arrow" />
           </button>
           <div class="dropdown-content btn-depl">
             <button class="btn-theme" id="light-theme">Sailor Day</button>
@@ -34,7 +34,7 @@
           <div class="padding-input" >
             <div class="flex">
               <div>
-              <img src="/Acámica/gifOsv2/img/window img.png" alt="Imagen de windows" />
+              <img src="/img/window img.png" alt="Imagen de windows" />
             </div>
               <div>
                 </div> <p><b>Aquí podrás crear tus propios guifos</b></p>
@@ -58,20 +58,20 @@
         </section>
         <section class="video-window center-items hide flex" id="video">
              <div>
-                  <video  autoplay playsinline controls></video>
+                  <video  autoplay playsinline controls id="video-size"></video>
              </div>
              <div class="container-video-btn margin-btn">
                <div id="btn-record">
-                 <button class="btn-video img-btn"> <img src="/Acámica/gifOsv2/img/camera_light.svg" alt="Camara"></button>
+                 <button class="btn-video img-btn"> <img src="/img/camera_light.svg" alt="Camara"></button>
                   <button class="btn-video" >Capturar</button>
                 </div>
                   <div id="btn-save" class="hide">
                     <input type="text" id="time-input" value="" disabled>
-                    <button class="btn-video img-btn"><img src="/Acámica/gifOsv2/img/recording.svg" alt="Comenzar a grabar"></button>
+                    <button class="btn-video img-btn"><img src="/img/recording.svg" alt="Comenzar a grabar"></button>
                     <button class="btn-video">Listo</button>
                   </div>
                   <div class="hide" id="final-step">
-                    <button class="btn-video">Repetir Captura</button>
+                    <button class="btn-video" id="repeat">Repetir Captura</button>
                     <button class="btn-video" id="upload">Subir Guifo</button>
                   </div>
              </div>
@@ -85,7 +85,7 @@
         <input type="text" id="myGifos-bar" class="gnr-bar margin-flex padding-input" disabled placeholder="Mis Guifos:" />
         <div>
     </section>
-    <script src="/Acámica/gifOsv2/js/video.js"></script>
+    <script src="/js/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
   </body>
 </html>
