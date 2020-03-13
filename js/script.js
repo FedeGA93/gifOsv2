@@ -9,10 +9,11 @@ botontest.addEventListener("click", event => {
 let searches = document.getElementById("search").value;
 
 function searchtext() {
+  gifs = [];
+  clear();
   let search = document.getElementById("search").value;
-
   fetch(
-    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=8&offset=0&rating=G&lang=en`
+    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=20&offset=0&rating=G&lang=en`
   )
     .then(function(response) {
       return response.json();
@@ -31,19 +32,23 @@ const populateContainer = container =>
       (newFrame = document.createElement("iframe")),
         newFrame.setAttribute("src", element),
         document.getElementById(container).appendChild(newFrame);
-      gifs = [];
+        newFrame.setAttribute("height", "280px")
+        newFrame.setAttribute("width", "280px")
+
     });
   };
 function trends() {
   fetch(
-    `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
+    `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=20&offset=0&rating=G&lang=en`
   )
     .then(function(response) {
       return response.json();
     })
     .then(populateContainer("divContainer"));
 }
+
 let all;
+
 document.getElementById("dark-theme").addEventListener("click", function classToggle() {
   all = document.getElementsByTagName("*");
   for (let i = 0; i < all.length; i++) {
@@ -62,7 +67,7 @@ trends();
 
 let arrayBtn = [];
 const set = new Set();
-function saveSearchs(searches) {
+function saveSearchs() {
   const searchInput = document.getElementById("search").value;
   const father = document.querySelector(".hashtags");
   const buttonHash = document.createElement("button");
@@ -70,8 +75,14 @@ function saveSearchs(searches) {
   father.appendChild(buttonHash);
   set.add(searchInput);
   arrayBtn = Array.from(set);
-  console.log(arrayBtn);
+
   arrayBtn.forEach(item => {
     buttonHash.innerHTML = "#" + item;
   });
+}
+
+
+function clear(){
+  document.getElementById("divContainer").innerHTML = "";
+
 }

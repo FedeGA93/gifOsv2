@@ -102,8 +102,7 @@ function videoLayout() {
   document.getElementById("video").classList.remove("hide");
   document.getElementById("text-box").classList.add("hide");
   document.getElementById("myGifos-bar").classList.add("hide");
-  document.getElementById("window-txt").innerHTML =
-    "Un Chequeo Antes de Empezar";
+  document.getElementById("window-txt").innerHTML="Un Chequeo Antes de Empezar";
   document.getElementById("windowContainer").classList.remove("square-windows");
   document.getElementById("windowContainer").classList.add("newSize");
   document.getElementById("btn-record").classList.add("btn-flex");
@@ -134,5 +133,4 @@ function clearLayout() {
   document.getElementById("video-preview").classList.add("hide");
 }
 
-const uploadURL =
-  "http://upload.giphy.com/v1/gifs?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR";
+const uploadURL = "http://upload.giphy.com/v1/gifs?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR";
