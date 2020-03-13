@@ -1,42 +1,23 @@
 const video = document.querySelector("video");
 let recorder;
+const myGifosLocal = [];
 async function stopRecordingCallback() {
   video.srcObject = null;
   let blob = await recorder.getBlob();
   video.src = URL.createObjectURL(blob);
-  recorder.stream.getTracks(t => t.stop());
+  document.getElementById("video-preview").classList.add("hide");
+  document.getElementById("gif-preview").setAttribute("src", video.src);
+  document.getElementById("gif-preview").classList.add("gif-size");
+
 
   document.getElementById("repeat").addEventListener("click", async function() {
     await recorder.reset();
     await recorder.destroy();
-    recorder = null;
     clearLayout();
     videoLayout();
-    newFunc();
   });
 
-  /*  document.getElementById("upload").addEventListener("click", () => {
-    const formData = new FormData();
-    formData.append("username","federicogomezavalos")
-    formData.append("file", blob, "myGif.gif");
-    console.log(formData.get("file"));
-    const xhr = new XMLHttpRequest();
-    xhr.open("POST", uploadURL, true);
-    xhr.withCredentials = true;
-    xhr.setRequestHeader("Access-Control-Allow-Origin", "*");
-    xhr.onreadystatechange = function() {
-      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-        const gifObject = JSON.parse(xhr.response);
-      }try {
-        xhr.send(formData);
-      } catch (e) {
-        alert('Error al enviar el gif:' + e);
-      }
-    };
-  }); */
-
   document.getElementById("upload").addEventListener("click", () => {
-    
     let formData = new FormData();
     formData.append("file", blob, "myGif.gif");
     console.log(formData.get("file"));
@@ -47,8 +28,8 @@ async function stopRecordingCallback() {
       body: formData,
       username: "fedegomezavalos",
       type: "video/webm"
-    }, true);
-    console.log(req)
+    });
+    console.log(req);
     fetch(req)
       .then(response => {
         console.log("Response received from server " + response);
@@ -60,7 +41,7 @@ async function stopRecordingCallback() {
 }
 document
   .getElementById("btn-start-recording")
-  .addEventListener("click", async function newFunc() {
+  .addEventListener("click", async function() {
     videoLayout();
     this.disabled = true;
     let stream = await navigator.mediaDevices.getUserMedia({
@@ -69,11 +50,11 @@ document
     });
     video.srcObject = stream;
     recorder = new RecordRTCPromisesHandler(stream, {
-      type: 'gif',
+      type: "gif",
       frameRate: 1,
       quality: 10,
       width: 360,
-      hidden: 240,
+      hidden: 240
     });
     document
       .getElementById("btn-record")
@@ -82,7 +63,6 @@ document
         await recorder.startRecording();
         // helps releasing camera on stopRecording
         recorder.stream = stream;
-        document.getElementById("btn-stop-recording").disabled = false;
         // if you want to access internal recorder
         const internalRecorder = await recorder.getInternalRecorder();
         console.log("internal-recorder", internalRecorder.name);
@@ -122,7 +102,8 @@ function videoLayout() {
   document.getElementById("video").classList.remove("hide");
   document.getElementById("text-box").classList.add("hide");
   document.getElementById("myGifos-bar").classList.add("hide");
-  document.getElementById("window-txt").innerHTML ="Un Chequeo Antes de Empezar";
+  document.getElementById("window-txt").innerHTML =
+    "Un Chequeo Antes de Empezar";
   document.getElementById("windowContainer").classList.remove("square-windows");
   document.getElementById("windowContainer").classList.add("newSize");
   document.getElementById("btn-record").classList.add("btn-flex");
@@ -149,6 +130,8 @@ function finalStep() {
 function clearLayout() {
   document.getElementById("final-step").classList.remove("btn-flex");
   document.getElementById("final-step").classList.add("hide");
+  document.getElementById("gif-preview").classList.remove("gif-size");
+  document.getElementById("video-preview").classList.add("hide");
 }
 
 const uploadURL =

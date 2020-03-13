@@ -52,13 +52,14 @@
               ¿Quieres comenzar a crear tu <b>guifo</b> ahora?
             </p>
           <div class="container-video-btn">
-            <button id="btn-stop-recording" disabled class="btn-video">Cancelar</button>
+            <button disabled class="btn-video">Cancelar</button>
             <button id="btn-start-recording" class="btn-video">comenzar</button>
           </div>
         </section>
         <section class="video-window center-items hide flex" id="video">
              <div>
-                  <video  autoplay playsinline controls id="video-size"></video>
+                  <video  autoplay playsinline  id="video-preview"></video>
+                  <img id="gif-preview">
              </div>
              <div class="container-video-btn margin-btn">
                <div id="btn-record">
@@ -84,6 +85,9 @@
       <div>
         <input type="text" id="myGifos-bar" class="gnr-bar margin-flex padding-input" disabled placeholder="Mis Guifos:" />
         <div>
+          <div id="myLocalGifs">
+            
+          </div>
     </section>
     <script src="/js/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
