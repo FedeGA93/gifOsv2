@@ -5,6 +5,8 @@ const searchBar = document.querySelector('input[type="text"]');
 botontest.addEventListener("click", event => {
   event.target;
   searchtext();
+  document.getElementById("divContainer").scrollIntoView({block: "end"});
+
 });
 let searches = document.getElementById("search").value;
 
@@ -13,12 +15,12 @@ function searchtext() {
   clear();
   let search = document.getElementById("search").value;
   fetch(
-    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=20&offset=0&rating=G&lang=en`
+    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=8&offset=0&rating=G&lang=en`
   )
-    .then(function(response) {
-      return response.json();
-    })
-    .then(populateContainer("divContainer"));
+   .then(function(response) {
+     return response.json();
+   })
+   .then(populateContainer("divContainer"));
   newFrame = "";
   document.getElementById("trend").value = search;
   saveSearchs();
@@ -39,7 +41,7 @@ const populateContainer = container =>
   };
 function trends() {
   fetch(
-    `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=20&offset=0&rating=G&lang=en`
+    `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
   )
     .then(function(response) {
       return response.json();
@@ -68,21 +70,45 @@ trends();
 let arrayBtn = [];
 const set = new Set();
 function saveSearchs() {
-  const searchInput = document.getElementById("search").value;
-  const father = document.querySelector(".hashtags");
+  const search = document.getElementById("search").value;
+  let father = document.querySelector(".hashtags");
   const buttonHash = document.createElement("button");
   buttonHash.classList.add("btn-hash");
   father.appendChild(buttonHash);
-  set.add(searchInput);
+  set.add(search);
   arrayBtn = Array.from(set);
 
   arrayBtn.forEach(item => {
-    buttonHash.innerHTML = "#" + item;
-  });
+  buttonHash.innerHTML = "#" + item;
+  father = "";
+
+});
 }
 
-
+function btnSearch(){
+  btnHash = document.querySelector(".btn-hash");
+  btnSearch = btnHash.value
+  btnHash.addEventListener("click", ()=>{
+  btnSearch = btnHash.value
+  searchtext(btnHash)
+  })
+}
 function clear(){
   document.getElementById("divContainer").innerHTML = "";
 
 }
+/* 
+
+function renderTags(tags){
+  const tagElements  = tags.map(item => {const tag = createElement('div');
+  tag.innerHtml = `#${item}`;
+  const tagContainer = document.getElementById("tag-container");
+  tagElements.forEach(element => tagContainer.appendChild(element))
+})}
+
+function createTags(search){
+ const tags =localStorage.getItem('searchHistory');
+ const newTags = [search].concat(tags.filter(item => item != search))
+ localStorage.setItem('searchHistory',newTags)
+ createTags(newTags)
+} */
