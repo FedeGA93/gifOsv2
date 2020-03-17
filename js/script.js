@@ -8,7 +8,6 @@ botontest.addEventListener("click", event => {
   document.getElementById("divContainer").scrollIntoView({block: "end"});
 
 });
-let searches = document.getElementById("search").value;
 
 function searchtext() {
   gifs = [];
@@ -23,7 +22,7 @@ function searchtext() {
    .then(populateContainer("divContainer"));
   newFrame = "";
   document.getElementById("trend").value = search;
-  saveSearchs();
+  getSearchs(search);
 }
 
 let newframe;
@@ -67,48 +66,42 @@ document.getElementById("light-theme").addEventListener("click", function classD
 });
 trends();
 
-let arrayBtn = [];
+/* const arrayBtn = [];
 const set = new Set();
 function saveSearchs() {
-  const search = document.getElementById("search").value;
-  let father = document.querySelector(".hashtags");
-  const buttonHash = document.createElement("button");
-  buttonHash.classList.add("btn-hash");
-  father.appendChild(buttonHash);
-  set.add(search);
-  arrayBtn = Array.from(set);
+let search = document.getElementById("search").value;
+set.add(search);
+setJson = JSON.stringify([...set.values()]);
+arrayBtn.push(setJson);
+let setArrayBtn = JSON.stringify([...arrayBtn.values()]);
 
-  arrayBtn.forEach(item => {
-  buttonHash.innerHTML = "#" + item;
-  father = "";
+console.log(setArrayBtn)}
 
-});
-}
-
-function btnSearch(){
-  btnHash = document.querySelector(".btn-hash");
-  btnSearch = btnHash.value
-  btnHash.addEventListener("click", ()=>{
-  btnSearch = btnHash.value
-  searchtext(btnHash)
-  })
-}
+ */
 function clear(){
   document.getElementById("divContainer").innerHTML = "";
 
 }
-/* 
 
-function renderTags(tags){
-  const tagElements  = tags.map(item => {const tag = createElement('div');
-  tag.innerHtml = `#${item}`;
-  const tagContainer = document.getElementById("tag-container");
-  tagElements.forEach(element => tagContainer.appendChild(element))
-})}
 
-function createTags(search){
- const tags =localStorage.getItem('searchHistory');
- const newTags = [search].concat(tags.filter(item => item != search))
- localStorage.setItem('searchHistory',newTags)
- createTags(newTags)
-} */
+let arrayBtn = []
+const set = new Set()
+function getSearchs (search) {
+  set.add(search)
+  arrayBtn = Array.from(set)
+  console.log(set)
+  localStorage.setItem("searchs", JSON.stringify(arrayBtn));
+  savedSearchs()
+};
+
+function savedSearchs(){
+  const father = document.querySelector(".hashtags");
+  const buttonHash = document.createElement("button");
+  buttonHash.classList.add("btn-hash");
+  father.appendChild(buttonHash);
+  let newButton = localStorage.getItem("searchs");
+  console.log(JSON.parse(newButton))
+  JSON.parse(newButton).forEach(item  => {
+    buttonHash.innerHTML = ("#" + item);
+  })
+}

@@ -10,20 +10,20 @@ async function stopRecordingCallback() {
   let blob = await recorder.getBlob();
   console.log(blob)
   video.src = URL.createObjectURL(blob);
-  document.getElementById("repeat").addEventListener("click", async function() {
+  document.querySelector("#repeat").addEventListener("click", async function() {
     await recorder.reset();
     await recorder.destroy();
     recorder = null;
     clearLayout();
     videoLayout();
-    await startRecording()
+    startRecording()
 
   });
 
-  document.getElementById("video-preview").classList.add("hide");
-  document.getElementById("gif-preview").setAttribute("src", video.src);
-  document.getElementById("gif-preview").classList.add("gif-size");
-  document.getElementById("upload").addEventListener("click", () => {
+  document.querySelector("#video-preview").classList.add("hide");
+  document.querySelector("#gif-preview").setAttribute("src", video.src);
+  document.querySelector("#gif-preview").classList.add("gif-size");
+  document.querySelector("#upload").addEventListener("click", () => {
     uploading()
     let formData = new FormData();
     formData.append("file", blob, "myGif.gif");
@@ -47,7 +47,7 @@ async function stopRecordingCallback() {
   });
 }
 document
-  .getElementById("btn-start-recording")
+  .querySelector("#btn-start-recording")
   .addEventListener("click", async function startRecording() {
     videoLayout();
     this.disabled = true;
@@ -64,7 +64,7 @@ document
       hidden: 240
     });
     document
-      .getElementById("btn-record")
+      .querySelector("#btn-record")
       .addEventListener("click", async function() {
         midStep();
         await recorder.startRecording();
@@ -76,7 +76,7 @@ document
         // if you want to read recorder's state
         console.log("recorder state: ", await recorder.getState()); */
         document
-          .getElementById("btn-save")
+          .querySelector("#btn-save")
           .addEventListener("click", async function() {
             await recorder.stopRecording();
             recorder.stream.getTracks(t => t.stop());
@@ -87,60 +87,60 @@ document
     });
 
 document
-  .getElementById("dark-theme")
+  .querySelector("#dark-theme")
   .addEventListener("click", function classToggle() {
     all = document.getElementsByTagName("*");
     for (let i = 0; i < all.length; i++) {
       all[i].classList.add("dark");
     }
-    document.getElementById("logo").src = "/img/gifOF_logo_dark.png";
+    document.querySelector("#logo").src = "/img/gifOF_logo_dark.png";
   });
 document
-  .getElementById("light-theme")
+  .querySelector("#light-theme")
   .addEventListener("click", function classDelete() {
     all = document.getElementsByTagName("*");
     for (let i = 0; i < all.length; i++) {
       all[i].classList.remove("dark");
     }
-    document.getElementById("logo").src = "/img/gifOF_logo.png";
+    document.querySelector("#logo").src = "/img/gifOF_logo.png";
   });
 
 function videoLayout() {
-  document.getElementById("video").classList.remove("hide");
-  document.getElementById("text-box").classList.add("hide");
-  document.getElementById("myGifos-bar").classList.add("hide");
-  document.getElementById("window-txt").innerHTML="Un Chequeo Antes de Empezar";
-  document.getElementById("windowContainer").classList.remove("square-windows");
-  document.getElementById("windowContainer").classList.add("newSize");
-  document.getElementById("btn-record").classList.add("btn-flex");
-  document.getElementById("video-preview").classList.remove("hide");
+  document.querySelector("#video").classList.remove("hide");
+  document.querySelector("#text-box").classList.add("hide");
+  document.querySelector("#myGifos-bar").classList.add("hide");
+  document.querySelector("#window-txt").innerHTML="Un Chequeo Antes de Empezar";
+  document.querySelector("#windowContainer").classList.remove("square-windows");
+  document.querySelector("#windowContainer").classList.add("newSize");
+  document.querySelector("#btn-record").classList.add("btn-flex");
+  document.querySelector("#video-preview").classList.remove("hide");
 
 }
 
 function menuLayout() {
-  document.getElementById("video").classList.add("hide");
-  document.getElementById("text-box").classList.remove("hide");
-  document.getElementById("myGifos-bar").classList.remove("hide");
+  document.querySelector("#video").classList.add("hide");
+  document.querySelector("#text-box").classList.remove("hide");
+  document.querySelector("#myGifos-bar").classList.remove("hide");
 }
 function midStep() {
-  document.getElementById("btn-record").classList.remove("btn-flex");
-  document.getElementById("btn-record").classList.add("hide");
-  document.getElementById("btn-save").classList.remove("hide");
-  document.getElementById("btn-save").classList.add("btn-flex");
+  document.querySelector("#btn-record").classList.remove("btn-flex");
+  document.querySelector("#btn-record").classList.add("hide");
+  document.querySelector("#btn-save").classList.remove("hide");
+  document.querySelector("#btn-save").classList.add("btn-flex");
 }
 function finalStep() {
-  document.getElementById("gif-preview").classList.remove("hide");
-  document.getElementById("btn-save").classList.remove("btn-flex");
-  document.getElementById("btn-save").classList.add("hide");
-  document.getElementById("final-step").classList.remove("hide");
-  document.getElementById("final-step").classList.add("btn-flex");
+  document.querySelector("#gif-preview").classList.remove("hide");
+  document.querySelector("#btn-save").classList.remove("btn-flex");
+  document.querySelector("#btn-save").classList.add("hide");
+  document.querySelector("#final-step").classList.remove("hide");
+  document.querySelector("#final-step").classList.add("btn-flex");
   stopRecordingCallback();
 }
 function clearLayout() {
-  document.getElementById("final-step").classList.remove("btn-flex");
-  document.getElementById("final-step").classList.add("hide");
-  document.getElementById("gif-preview").classList.remove("gif-size");
-  document.getElementById("gif-preview").classList.add("hide");
+  document.querySelector("#final-step").classList.remove("btn-flex");
+  document.querySelector("#final-step").classList.add("hide");
+  document.querySelector("#gif-preview").classList.remove("gif-size");
+  document.querySelector("#gif-preview").classList.add("hide");
 
 }
 

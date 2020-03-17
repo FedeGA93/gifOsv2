@@ -140,7 +140,7 @@ input:focus ~ #btn {
   display: flex;
   flex-flow: row wrap;
   max-width: fit-content;
-  padding-left: 9em;
+  padding-left: 13em;
 }
 
 .margin-flex {
@@ -367,7 +367,7 @@ line-height: 14px;
   align-self: center;
   justify-content: center;
   width: 41em;
-  height: 35em;
+  height: 30em;
 }
 
 .whiteBackground{
@@ -376,7 +376,21 @@ border: 1px solid #979797;
 box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
 }
 
+.waitChild{
+  display: inherit;
+  flex-flow: column wrap;
+  align-items: center;
+  align-self: center;
+  padding-left: 13em;
+  justify-content: center;
+}
 
+.waitButton{
+  display: inherit;
+  align-self: flex-end;
+  padding-top: 34em;
+  padding-right: 1em;
+}
 .hide{
   display: none;
 }
