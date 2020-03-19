@@ -391,6 +391,11 @@ box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
   padding-top: 34em;
   padding-right: 1em;
 }
+.btnPadding{
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 11em;
+}
 .hide{
   display: none;
 }

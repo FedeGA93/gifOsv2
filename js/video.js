@@ -9,17 +9,6 @@ async function stopRecordingCallback() {
   video.srcObject = null;
   let blob = await recorder.getBlob();
   video.src = URL.createObjectURL(blob);
-  document.querySelector("#repeat").addEventListener("click", async function() {
-    await recorder.reset();
-    await recorder.destroy();
-    recorder = null;
-    clearLayout();
-    videoLayout();
-    video.srcObject = stream;
-    document.getElementById("#btn-record").classList.add("flex")
-
-  });
-
   document.querySelector("#video-preview").classList.add("hide");
   document.querySelector("#gif-preview").setAttribute("src", video.src);
   document.querySelector("#gif-preview").classList.add("gif-size");
@@ -45,6 +34,18 @@ async function stopRecordingCallback() {
         console.log("ERROR: ", err.message);
       });
   });
+}
+function recordAgain(){
+document.querySelector("#repeat").addEventListener("click", async function() {
+  await recorder.reset();
+  await recorder.destroy();
+  recorder = null;
+  clearLayout();
+  videoLayout();
+  video.srcObject = stream;
+  document.querySelector("#btn-record").classList.remove("hide")
+
+});
 }
 document
   .querySelector("#btn-start-recording")
@@ -151,3 +152,5 @@ function uploading(){
   document.querySelector("#upload").classList.add("hide");
   
 }
+
+recordAgain();
