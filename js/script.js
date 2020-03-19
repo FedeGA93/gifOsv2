@@ -12,9 +12,9 @@ botontest.addEventListener("click", event => {
 function searchtext() {
   gifs = [];
   clear();
-  let search = document.getElementById("search").value;
+  let searchTerm = document.getElementById("search").value;
   fetch(
-    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${search}&limit=8&offset=0&rating=G&lang=en`
+    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${searchTerm}&limit=8&offset=0&rating=G&lang=en`
   )
    .then(function(response) {
      return response.json();
@@ -22,7 +22,7 @@ function searchtext() {
    .then(populateContainer("divContainer"));
   newFrame = "";
   document.getElementById("trend").value = search;
-  getSearchs(search);
+  addSearchTerm(searchTerm);
 }
 
 let newframe;
@@ -83,25 +83,20 @@ function clear(){
 
 }
 
-
-let arrayBtn = []
-const set = new Set()
-function getSearchs (search) {
-  set.add(search)
-  arrayBtn = Array.from(set)
-  console.log(set)
-  localStorage.setItem("searchs", JSON.stringify(arrayBtn));
-  savedSearchs()
-};
-
-function savedSearchs(){
-  const father = document.querySelector(".hashtags");
-  const buttonHash = document.createElement("button");
-  buttonHash.classList.add("btn-hash");
-  father.appendChild(buttonHash);
-  let newButton = localStorage.getItem("searchs");
-  console.log(JSON.parse(newButton))
-  JSON.parse(newButton).forEach(item  => {
-    buttonHash.innerHTML = ("#" + item);
-  })
+const set = new Set();
+function addSearchTerm(searchTerm) {
+  set.add(searchTerm);
+  localStorage.setItem('searchTerms', JSON.stringify(Array.from(set)));
+  renderStoredSearchTerms();
+}
+function renderStoredSearchTerms() {
+  let storedSearchTerms = localStorage.getItem('searchTerms');
+  const father = document.querySelector('.hashtags');
+  father.innerHTML = '';
+  JSON.parse(storedSearchTerms).forEach(item => {
+    const buttonHash = document.createElement('button');
+    buttonHash.classList.add('btn-hash');
+    father.appendChild(buttonHash);
+    buttonHash.innerHTML = ('#' + item);
+  });
 }

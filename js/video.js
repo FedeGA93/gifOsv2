@@ -2,13 +2,12 @@ const video = document.querySelector("video");
 const uploadURL = "http://upload.giphy.com/v1/gifs?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR";
 const myGifosLocal = [];
 let all;
-
+let stream;
 let recorder;
 
 async function stopRecordingCallback() {
   video.srcObject = null;
   let blob = await recorder.getBlob();
-  console.log(blob)
   video.src = URL.createObjectURL(blob);
   document.querySelector("#repeat").addEventListener("click", async function() {
     await recorder.reset();
@@ -16,7 +15,8 @@ async function stopRecordingCallback() {
     recorder = null;
     clearLayout();
     videoLayout();
-    startRecording()
+    video.srcObject = stream;
+    document.getElementById("#btn-record").classList.add("flex")
 
   });
 
@@ -51,7 +51,7 @@ document
   .addEventListener("click", async function startRecording() {
     videoLayout();
     this.disabled = true;
-    let stream = await navigator.mediaDevices.getUserMedia({
+     stream = await navigator.mediaDevices.getUserMedia({
       video: true,
       audio: false
     });
