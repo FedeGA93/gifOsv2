@@ -5,7 +5,7 @@ const searchBar = document.querySelector('input[type="text"]');
 botontest.addEventListener("click", event => {
   event.target;
   searchtext();
-  document.getElementById("divContainer").scrollIntoView({block: "end"});
+  document.getElementById("divContainer").scrollIntoView({ block: "end" });
 
 });
 
@@ -16,10 +16,10 @@ function searchtext() {
   fetch(
     `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${searchTerm}&limit=8&offset=0&rating=G&lang=en`
   )
-   .then(function(response) {
-     return response.json();
-   })
-   .then(populateContainer("divContainer"));
+    .then(function (response) {
+      return response.json();
+    })
+    .then(populateContainer("divContainer"));
   newFrame = "";
   document.getElementById("trend").value = search;
   addSearchTerm(searchTerm);
@@ -33,8 +33,8 @@ const populateContainer = container =>
       (newFrame = document.createElement("iframe")),
         newFrame.setAttribute("src", element),
         document.getElementById(container).appendChild(newFrame);
-        newFrame.setAttribute("height", "280px")
-        newFrame.setAttribute("width", "280px")
+      newFrame.setAttribute("height", "280px")
+      newFrame.setAttribute("width", "280px")
 
     });
   };
@@ -42,7 +42,7 @@ function trends() {
   fetch(
     `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
   )
-    .then(function(response) {
+    .then(function (response) {
       return response.json();
     })
     .then(populateContainer("divContainer"));
@@ -78,7 +78,7 @@ let setArrayBtn = JSON.stringify([...arrayBtn.values()]);
 console.log(setArrayBtn)}
 
  */
-function clear(){
+function clear() {
   document.getElementById("divContainer").innerHTML = "";
 
 }

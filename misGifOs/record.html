@@ -1,104 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="es">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Video</title>
     <link rel="stylesheet" href="/styles/style.css" />
-  </head>
+</head>
 
-  <body class="body-flex background-color">
+<body class="body-flex background-color">
     <nav class="nav">
-      <div>
-        <a href="/index.html"><img src="/img/arrow.svg" alt="Flecha pra volver atrás"></a>
-        <img src="/img/gifOF_logo.png" id="logo" alt="Logo de GifOs" />
-      </div>
-      <div class="flex">
-         <div class="flex dropdown pad-right">
-          <button class="btn-windows98">Elegir Tema</button>
-          <button class="btn-windows98 img-btn">
-            <img src="/img/dropdown.svg" id="arrow" alt="Menu dropdown arrow" />
-          </button>
-          <div class="dropdown-content btn-depl">
-            <button class="btn-theme" id="light-theme">Sailor Day</button>
-            <button class="btn-theme" id="dark-theme">Sailor Night</button>
-          </div>
+        <div>
+            <a href="/index.html"><img src="/img/arrow.svg" alt="Flecha pra volver atrás"></a>
+            <img src="/img/gifOF_logo.png" id="logo" alt="Logo de GifOs" />
         </div>
-      </div>
+        <div class="flex">
+            <div class="flex dropdown pad-right">
+                <button class="btn-windows98">Elegir Tema</button>
+                <button class="btn-windows98 img-btn">
+          <img src="/img/dropdown.svg" id="arrow" alt="Menu dropdown arrow" />
+        </button>
+                <div class="dropdown-content btn-depl">
+                    <button class="btn-theme" id="light-theme">Sailor Day</button>
+                    <button class="btn-theme" id="dark-theme">Sailor Night</button>
+                </div>
+            </div>
+        </div>
     </nav>
     <section class="menu-window center-items">
-      <div class="windows-style square-windows" id="windowContainer">
-        <div class="window-bar">
-          <p class="margin-zero letter-color letter" id="window-txt">Crear Guifos</p>
-          <section id="text-box">
-          <div class="padding-input" >
-            <div class="flex">
-              <div>
-              <img src="/img/window img.png" alt="Imagen de windows" />
+        <div class="windows-style square-windows" id="windowContainer">
+            <div class="window-bar">
+                <p class="margin-zero letter-color letter" id="window-txt">Crear Guifos</p>
+                <section id="text-box">
+                    <div class="padding-input">
+                        <div class="flex">
+                            <div>
+                                <img src="/img/windowimg.png" alt="Imagen de windows" />
+                            </div>
+                            <div>
+                                <p><b>Aquí podrás crear tus propios guifos</b></p>
+                            </div>
+                            <div>
+                                <p>
+                                    Crear tu guifo es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:
+                                    <br />
+                                    <b>1)</b> Dar permisos de acceso a la cámara (sólo por el tiempo de uso) <br />
+                                    <b>2)</b> Capturar tu momento guifo <br />
+                                    <b>3)</b> Revisar el momento <br />
+                                    <b>4)</b> Listo para subir y compartir! <br /> ¿Quieres comenzar a crear tu <b>guifo</b> ahora?
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-video-btn" id="videoContainer">
+                        <button disabled class="btn-video">Cancelar</button>
+                        <button id="btn-start-recording" class="btn-video">comenzar</button>
+                    </div>
+                </section>
             </div>
-              <div>
-                </div> <p><b>Aquí podrás crear tus propios guifos</b></p>
+        </div>
+    </section>
+    <section class="video-window center-items flex videoNorm hide " id="video">
+        <div>
+            <div>
+                <video autoplay playsinline id="video-preview"></video>
+                <img id="gif-preview" alt="un preview del gif que acabas de grabar" class="hide">
             </div>
-            </div>
-            <p>
-              Crear tu guifo es muy fácil, graba cualquier imagen con tu cámara
-              y obtén guifos personalizados. Los pasos para crear tu guifo son:
-              <br />
-              <b>1)</b> Dar permisos de acceso a la cámara (sólo por el tiempo
-              de uso) <br />
-              <b>2)</b> Capturar tu momento guifo <br />
-              <b>3)</b> Revisar el momento <br />
-              <b>4)</b> Listo para subir y compartir! <br />
-              ¿Quieres comenzar a crear tu <b>guifo</b> ahora?
-            </p>
-          <div class="container-video-btn">
-            <button disabled class="btn-video">Cancelar</button>
-            <button id="btn-start-recording" class="btn-video">comenzar</button>
-          </div>
-        </section>
-        <section class="video-window center-items hide flex" id="video">
-             <div>
-                  <video  autoplay playsinline  id="video-preview"></video>
-                  <img id="gif-preview">
-             </div>
-             <div class="container-video-btn margin-btn">
-               <div id="btn-record">
-                 <button class="btn-video img-btn"> <img src="/img/camera_light.svg" alt="Camara"></button>
-                  <button class="btn-video" >Capturar</button>
+            <div class="container-video-btn margin-btn">
+                <div id="btn-record">
+                    <button class="btn-video img-btn"> <img src="/img/camera_light.svg" alt="Camara"></button>
+                    <button class="btn-video">Capturar</button>
                 </div>
-                  <div id="btn-save" class="hide">
-                    <input type="text" id="time-input" value="" disabled>
-                    <button class="btn-video img-btn"><img src="/img/recording.svg" alt="Comenzar a grabar"></button>
-                    <button class="btn-video">Listo</button>
-                  </div>
-                  <div class="hide" id="final-step">
+                <div id="btn-save" class="hide">
+                    <input type="text" id="time-input" value="" class="timer" disabled>
+                    <button class="btn-video img-btn btn-color-red "><img src="/img/recording.svg" alt="Comenzar a grabar"></button>
+                    <button class="btn-video btn-color-red ">Listo</button>
+                </div>
+                <div class="hide" id="final-step">
                     <button class="btn-video" id="repeat">Repetir Captura</button>
                     <button class="btn-video" id="upload">Subir Guifo</button>
-                  </div>
-                  <div id="uploading" class="waitContainer whiteBackground hide">
+                </div>
+                <div id="uploading" class="waitContainer whiteBackground transition hide">
                     <div class="waitChild">
-                    <img src="/img/globe_img.png" alt="Globo terraqueo">
-                    <p class="wait-title">Estamos subiendo tu guifo…</p>
-                    <p class="wait">Tiempo restante: <s>38 años</s> algunos minutos</p> 
+                        <img src="/img/globe_img.png" alt="Globo terraqueo">
+                        <p class="wait-title">Estamos subiendo tu guifo…</p>
+                        <p class="wait">Tiempo restante: <s>38 años</s> algunos minutos</p>
                     </div>
                     <div class="waitButton">
-                    <button class="btn-video" id="cancel" disabled>Cancelar</button>
+                        <button class="btn-video" id="cancel" disabled>Cancelar</button>
                     </div>
-                  </div>
-        </section>
+                </div>
+                <div>
+                    <div>
+                        <div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      </div>
     </section>
     <section>
-      <div>
-        <input type="text" id="myGifos-bar" class="gnr-bar margin-flex padding-input" disabled placeholder="Mis Guifos:" />
         <div>
-          <div id="myLocalGifs">
-            
-          </div>
+            <input type="text" id="myGifos-bar" class="gnr-bar margin-flex padding-input" disabled placeholder="Mis Guifos:" />
+            <div>
+                <div id="myLocalGifs">
+                </div>
+            </div>
+        </div>
     </section>
     <script src="/js/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
-  </body>
+</body>
+
 </html>
