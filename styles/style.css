@@ -424,6 +424,33 @@ input:focus~#btn {
     box-shadow: inset -2px -2px 0 0 #E6E6E6, inset 2px 2px 0 0 #000000;
 }
 
+.gif-preview {
+    opacity: 0.3;
+    height: 191px;
+    width: 365px;
+    transform: translateY(-164%);
+}
+
+.guifo-create {
+    display: flex;
+    flex-flow: column;
+    transform: translateY(-20em);
+}
+
+.guifo-btn {
+    display: flex;
+    flex-flow: column;
+    transform: translateX(4em);
+}
+
+.ready-btn {
+    transform: translate(8em, 23em);
+}
+
+.btn-resize {
+    width: 256px;
+}
+
 .hide {
     display: none;
 }

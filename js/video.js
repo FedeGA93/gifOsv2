@@ -12,9 +12,7 @@ async function stopRecordingCallback() {
     await recorder.reset();
     await recorder.destroy();
     recorder = null;
-    document.querySelector("#video-preview").classList.add("hide");
-    document.querySelector("#gif-preview").setAttribute("src", video.src);
-    document.querySelector("#gif-preview").classList.add("gif-size");
+    createPreviews()
     document.querySelector("#upload").addEventListener("click", () => {
         uploading()
         let formData = new FormData();
@@ -169,13 +167,28 @@ function clearLayout() {
 
 }
 
+function createPreviews() {
+    document.querySelector("#video-preview").classList.add("hide");
+    document.querySelector("#gif-preview").setAttribute("src", video.src);
+    document.querySelector("#gif-preview").classList.add("gif-size");
+    document.querySelector("#gif-uploaded").setAttribute("src", video.src)
+}
+
 function uploading() {
     document.querySelector("#uploading").classList.remove("hide");
     document.querySelector("#gif-preview").classList.add("hide");
     document.querySelector("#repeat").classList.add("hide");
     document.querySelector("#upload").classList.add("hide");
+    setTimeout(function uploadFinished() {
+        document.querySelector("#guifoCreate").classList.remove("hide");
+        document.querySelector("#uploading").classList.add("hide");
+        /*    document.querySelector("#gif-preview").classList.remove("hide");
+           document.querySelector("#gif-preview").classList.remove("gif-size");*/
+        document.querySelector("#gif-uploaded").classList.add("gif-preview");
 
-}
+    }, 3000);
+};
+
 
 
 startRecord()
