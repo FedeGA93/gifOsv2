@@ -4,6 +4,7 @@ const myGifosLocal = [];
 let all;
 let stream;
 let recorder;
+const api = "https://api.giphy.com/v1/gifs/";
 
 async function stopRecordingCallback() {
     video.srcObject = null;
@@ -26,10 +27,19 @@ async function stopRecordingCallback() {
             username: "fedegomezavalos",
             type: "video/webm"
         });
-        console.log(req);
         fetch(req)
-            .then(response => {
+            .then(async function response() {
                 console.log("Response received from server " + response);
+                const gifUploaded = await upload(endpoints.upload, form);
+                const guifos = JSON.parse(localStorage.getItem("myGifs")) || [];
+                console.log(guifos);
+                const cambiarGifs = [...guifos, gifUploaded.id];
+                console.log(cambiarGifs);
+                localStorage.setItem("myGifs", JSON.stringify(cambiarGifs));
+                const gif = await getData(`${api_url}?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&ids=${cambiarGifs}`);
+                console.log(gif);
+                return gifUploaded;
+            
             })
             .catch(err => {
                 console.log("ERROR: ", err.message);
@@ -182,9 +192,8 @@ function uploading() {
     setTimeout(function uploadFinished() {
         document.querySelector("#guifoCreate").classList.remove("hide");
         document.querySelector("#uploading").classList.add("hide");
-        /*    document.querySelector("#gif-preview").classList.remove("hide");
-           document.querySelector("#gif-preview").classList.remove("gif-size");*/
         document.querySelector("#gif-uploaded").classList.add("gif-preview");
+        document.querySelector("#windowContainer").classList.add("window-resize")
 
     }, 3000);
 };

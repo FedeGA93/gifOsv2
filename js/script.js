@@ -11,7 +11,7 @@ botontest.addEventListener("click", event => {
 
 function searchtext() {
   gifs = [];
-  clear();
+  clearContainer();
   let searchTerm = document.getElementById("search").value;
   fetch(
     `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${searchTerm}&limit=8&offset=0&rating=G&lang=en`
@@ -20,25 +20,29 @@ function searchtext() {
       return response.json();
     })
     .then(populateContainer("divContainer"));
-  newFrame = "";
+  newImg = "";
   document.getElementById("trend").value = search;
   addSearchTerm(searchTerm);
 }
-
-let newframe;
+let newImg;
 const populateContainer = container =>
   function caspsule(myJson) {
-    myJson.data.forEach(data => gifs.push(data.embed_url));
+    console.log(myJson.data);
+    let title
+    myJson.data.forEach(data => gifs.push(data.id));
+   
     gifs.forEach(element => {
-      (newFrame = document.createElement("iframe")),
-        newFrame.setAttribute("src", element),
-        document.getElementById(container).appendChild(newFrame);
-      newFrame.setAttribute("height", "280px")
-      newFrame.setAttribute("width", "280px")
-
-    });
+      console.log(myJson.data.image.title)
+        newImg = document.createElement("img"),
+        newImg.setAttribute("src",`https://i.giphy.com/media/${element}/giphy.webp`),
+        document.getElementById(container).appendChild(newImg),
+        newImg.setAttribute("height", "280px"),
+        newImg.setAttribute("width", "280px")
+        newImg.setAttribute("alt", title)
+       
+     });
   };
-function trends() {
+function trensdGenerator() {
   fetch(
     `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
   )
@@ -64,7 +68,7 @@ document.getElementById("light-theme").addEventListener("click", function classD
   }
   document.getElementById("logo").src = "/img/gifOF_logo.png";
 });
-trends();
+trensdGenerator();
 
 /* const arrayBtn = [];
 const set = new Set();
@@ -78,7 +82,7 @@ let setArrayBtn = JSON.stringify([...arrayBtn.values()]);
 console.log(setArrayBtn)}
 
  */
-function clear() {
+function clearContainer() {
   document.getElementById("divContainer").innerHTML = "";
 
 }

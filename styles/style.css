@@ -428,13 +428,11 @@ input:focus~#btn {
     opacity: 0.3;
     height: 191px;
     width: 365px;
-    transform: translateY(-164%);
-}
-
+    transform: translate(-9em,2em);}
 .guifo-create {
     display: flex;
     flex-flow: column;
-    transform: translateY(-20em);
+    transform: translate(17em,-10em);
 }
 
 .guifo-btn {
@@ -444,11 +442,16 @@ input:focus~#btn {
 }
 
 .ready-btn {
-    transform: translate(8em, 23em);
+    transform: translate(9em, 12em);
 }
 
 .btn-resize {
     width: 256px;
+}
+
+.window-resize{
+    width: 48em;
+    height: 25em;
 }
 
 .hide {
