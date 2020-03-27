@@ -4,7 +4,6 @@ const myGifosLocal = [];
 let all;
 let stream;
 let recorder;
-const api = "https://api.giphy.com/v1/gifs/";
 
 async function stopRecordingCallback() {
     video.srcObject = null;
@@ -22,25 +21,16 @@ async function stopRecordingCallback() {
         let req = new Request(uploadURL, {
             method: "POST",
             headers: new Headers(),
-            mode: "no-cors",
             body: formData,
             username: "fedegomezavalos",
-            type: "video/webm"
+            type: "gif"
         });
+        console.log(req);
         fetch(req)
-            .then(async function response() {
-                console.log("Response received from server " + response);
-                const gifUploaded = await upload(endpoints.upload, form);
-                const guifos = JSON.parse(localStorage.getItem("myGifs")) || [];
-                console.log(guifos);
-                const cambiarGifs = [...guifos, gifUploaded.id];
-                console.log(cambiarGifs);
-                localStorage.setItem("myGifs", JSON.stringify(cambiarGifs));
-                const gif = await getData(`${api_url}?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&ids=${cambiarGifs}`);
-                console.log(gif);
-                return gifUploaded;
-            
-            })
+        .then(response => response.json())
+        .then(json => {
+          console.log('parsed json', json) // access json.body here
+        })
             .catch(err => {
                 console.log("ERROR: ", err.message);
             });
