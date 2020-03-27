@@ -1,18 +1,21 @@
 let gifs = [];
 const api = "https://api.giphy.com/v1/gifs/";
 let botontest = document.getElementById("btn");
+let all;
+
 const searchBar = document.querySelector('input[type="text"]');
 botontest.addEventListener("click", event => {
   event.target;
   searchtext();
-  document.getElementById("divContainer").scrollIntoView({ block: "end" });
-
 });
 
 function searchtext() {
   gifs = [];
   clearContainer();
   let searchTerm = document.getElementById("search").value;
+  console.log(searchTerm)
+
+  if (searchTerm !== null) {
   fetch(
     `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${searchTerm}&limit=8&offset=0&rating=G&lang=en`
   )
@@ -21,30 +24,26 @@ function searchtext() {
     })
     .then(populateContainer("divContainer"));
   newImg = "";
-  document.getElementById("trend").value = search;
+  document.getElementById("trend").value = searchTerm;
+ 
   addSearchTerm(searchTerm);
+  }else{alert("La busqueda está vacia")}
 }
 let newImg;
 const populateContainer = container =>
   function caspsule(myJson) {
-    console.log(myJson.data);
-    let title
     myJson.data.forEach(data => gifs.push(data.id));
-   
     gifs.forEach(element => {
-      console.log(myJson.data.image.title)
         newImg = document.createElement("img"),
         newImg.setAttribute("src",`https://i.giphy.com/media/${element}/giphy.webp`),
         document.getElementById(container).appendChild(newImg),
         newImg.setAttribute("height", "280px"),
-        newImg.setAttribute("width", "280px")
-        newImg.setAttribute("alt", title)
-       
+        newImg.setAttribute("width", "280px")     
      });
   };
-function trensdGenerator() {
+function trendsGenerator() {
   fetch(
-    `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=8&offset=0&rating=G&lang=en`
+    `${api}trending?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=&limit=20&offset=0&rating=G&lang=en`
   )
     .then(function (response) {
       return response.json();
@@ -52,7 +51,15 @@ function trensdGenerator() {
     .then(populateContainer("divContainer"));
 }
 
-let all;
+let random = function randomSuggestionsGenerator(){
+  fetch(
+    `${api}random?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR`
+  )
+    .then(function (response) {
+      return response.json();
+    })
+    .then(populateRandomContainer("divSuggestions"));
+}
 
 document.getElementById("dark-theme").addEventListener("click", function classToggle() {
   all = document.getElementsByTagName("*");
@@ -68,20 +75,8 @@ document.getElementById("light-theme").addEventListener("click", function classD
   }
   document.getElementById("logo").src = "/img/gifOF_logo.png";
 });
-trensdGenerator();
 
-/* const arrayBtn = [];
-const set = new Set();
-function saveSearchs() {
-let search = document.getElementById("search").value;
-set.add(search);
-setJson = JSON.stringify([...set.values()]);
-arrayBtn.push(setJson);
-let setArrayBtn = JSON.stringify([...arrayBtn.values()]);
 
-console.log(setArrayBtn)}
-
- */
 function clearContainer() {
   document.getElementById("divContainer").innerHTML = "";
 
@@ -102,5 +97,27 @@ function renderStoredSearchTerms() {
     buttonHash.classList.add('btn-hash');
     father.appendChild(buttonHash);
     buttonHash.innerHTML = ('#' + item);
+    buttonHash.value = item;
   });
 }
+const populateRandomContainer = container =>
+  function caspsule(myJson) {
+    console.log(myJson.data);
+    let id = myJson.data.id;
+    let title = myJson.data.title
+    newImg = document.createElement("img");
+    newImg.setAttribute("src",`https://i.giphy.com/media/${id}/giphy.webp`);
+    document.getElementById(container).appendChild(newImg);
+    newImg.setAttribute("height", "280px");
+    newImg.setAttribute("width", "280px");
+    newImg.setAttribute("title", title)
+       
+     
+  };
+
+for(let i=0; i<4;i++){
+    random();   
+  }
+
+renderStoredSearchTerms()
+trendsGenerator()

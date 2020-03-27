@@ -138,7 +138,7 @@ input:focus~#btn {
     display: flex;
     flex-flow: row wrap;
     max-width: fit-content;
-    padding-left: 13em;
+    padding-left: 4em;
 }
 
 .margin-flex {
@@ -203,6 +203,7 @@ input:focus~#btn {
     letter-spacing: 0;
     text-align: center;
     line-height: 18px;
+    
 }
 
 .btn-more {
@@ -401,7 +402,7 @@ input:focus~#btn {
 .btnPadding {
     display: flex;
     justify-content: flex-start;
-    padding-left: 11em;
+    padding-left: 0.1em;
 }
 
 .videoNorm {

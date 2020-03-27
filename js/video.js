@@ -29,7 +29,10 @@ async function stopRecordingCallback() {
         fetch(req)
         .then(response => response.json())
         .then(json => {
-          console.log('parsed json', json) // access json.body here
+            let id = json.data.id;
+            console.log(id)
+            addGif(id);
+          console.log('parsed json', json)
         })
             .catch(err => {
                 console.log("ERROR: ", err.message);
@@ -84,13 +87,7 @@ function startRecord() {
                         hidden: 240
                     })
                     await recorder.startRecording();
-                    // helps releasing camera on stopRecording
                     recorder.stream = stream;
-                    /* // if you want to access internal recorder
-                    const internalRecorder = await recorder.getInternalRecorder();
-                    console.log("internal-recorder", internalRecorder.name);
-                    // if you want to read recorder's state
-                    console.log("recorder state: ", await recorder.getState()); */
                     document
                         .querySelector("#btn-save")
                         .addEventListener("click", async function() {
@@ -188,7 +185,13 @@ function uploading() {
     }, 3000);
 };
 
+function addGif(id) {
+    localStorage.setItem('myGif', id);
+    renderStoredGif();
+  }
 
-
+function renderStoredGif(){
+    oldId = localStorage.getItem('myGif')
+}
 startRecord()
 recordAgain();
