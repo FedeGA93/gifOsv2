@@ -25,7 +25,6 @@ function searchtext() {
     .then(populateContainer("divContainer"));
   newImg = "";
   document.getElementById("trend").value = searchTerm;
- 
   addSearchTerm(searchTerm);
   }else{alert("La busqueda está vacia")}
 }
@@ -51,7 +50,7 @@ function trendsGenerator() {
     .then(populateContainer("divContainer"));
 }
 
-let random = function randomSuggestionsGenerator(){
+function randomSuggestionsGenerator(){
   fetch(
     `${api}random?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR`
   )
@@ -102,7 +101,6 @@ function renderStoredSearchTerms() {
 }
 const populateRandomContainer = container =>
   function caspsule(myJson) {
-    console.log(myJson.data);
     let id = myJson.data.id;
     let title = myJson.data.title
     newImg = document.createElement("img");
@@ -110,14 +108,16 @@ const populateRandomContainer = container =>
     document.getElementById(container).appendChild(newImg);
     newImg.setAttribute("height", "280px");
     newImg.setAttribute("width", "280px");
-    newImg.setAttribute("title", title)
-       
-     
+    newImg.setAttribute("title", title);
+    newImg.setAttribute("class", "holi")
+    
   };
 
-for(let i=0; i<4;i++){
-    random();   
-  }
+for(i=0;i<4;i++){ randomSuggestionsGenerator();}
+setTimeout(function(){ document.getElementsByClassName("trends").addEventListener("mouseover", function(){
+  alert("prueba")
+}) }, 10000);
+
 
 renderStoredSearchTerms()
 trendsGenerator()
