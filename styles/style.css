@@ -203,7 +203,6 @@ input:focus~#btn {
     letter-spacing: 0;
     text-align: center;
     line-height: 18px;
-    
 }
 
 .btn-more {
@@ -429,11 +428,13 @@ input:focus~#btn {
     opacity: 0.3;
     height: 191px;
     width: 365px;
-    transform: translate(-9em,2em);}
+    transform: translate(-9em, 2em);
+}
+
 .guifo-create {
     display: flex;
     flex-flow: column;
-    transform: translate(17em,-10em);
+    transform: translate(17em, -10em);
 }
 
 .guifo-btn {
@@ -450,9 +451,32 @@ input:focus~#btn {
     width: 256px;
 }
 
-.window-resize{
+.window-resize {
     width: 48em;
     height: 25em;
+}
+
+.textFig {
+    
+    transform: translate(3px,-19px);
+    margin: 0;
+    background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
+    color: #FFFFFF;
+    width: 281px;
+    height: 19px;
+}
+
+
+.position{
+    transform: translate(4px,5px);
+}
+.trends:hover {
+    
+    border: dotted 1px;
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
+    width: 288px;
+    height: 288px;
 }
 
 .hide {

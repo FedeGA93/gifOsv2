@@ -29,15 +29,15 @@ function searchtext() {
   }else{alert("La busqueda está vacia")}
 }
 let newImg;
+let test
 const populateContainer = container =>
   function caspsule(myJson) {
-    myJson.data.forEach(data => gifs.push(data.id));
+    myJson.data.forEach(data => gifs.push(data));
     gifs.forEach(element => {
-        newImg = document.createElement("img"),
-        newImg.setAttribute("src",`https://i.giphy.com/media/${element}/giphy.webp`),
-        document.getElementById(container).appendChild(newImg),
-        newImg.setAttribute("height", "280px"),
-        newImg.setAttribute("width", "280px")     
+      url = `https://i.giphy.com/media/${element.id}/giphy.webp`;
+      title = element.title;
+      console.log(element)
+      createGifBox(url, title)
      });
   };
 function trendsGenerator() {
@@ -102,22 +102,36 @@ function renderStoredSearchTerms() {
 const populateRandomContainer = container =>
   function caspsule(myJson) {
     let id = myJson.data.id;
-    let title = myJson.data.title
+    let title = myJson.data.title;
+    let url = `https://i.giphy.com/media/${id}/giphy.webp`;
     newImg = document.createElement("img");
     newImg.setAttribute("src",`https://i.giphy.com/media/${id}/giphy.webp`);
     document.getElementById(container).appendChild(newImg);
     newImg.setAttribute("height", "280px");
     newImg.setAttribute("width", "280px");
     newImg.setAttribute("title", title);
-    newImg.setAttribute("class", "holi")
+    newImg.setAttribute("transform", "translate(17.8em, 1.8em)")
+    createGifBox(url, title)
     
   };
 
+function createGifBox(url, title) {
+  const container = document.createElement('div')
+  container.className = "trends squareBox"
+  const fig = document.createElement('figure')
+  fig.className = "textFig"
+  fig.innerHTML= title;  
+  document.getElementById('divContainer').appendChild(container)
+  newImg = document.createElement("img"),
+  newImg.setAttribute("src", url ),
+  container.appendChild(newImg),
+  newImg.className = "position"
+  newImg.setAttribute("height", "280px"),
+  newImg.setAttribute("width", "280px"),
+  newImg.setAttribute("z-index", "1")
+  container.appendChild(fig)    
+  }
+
 for(i=0;i<4;i++){ randomSuggestionsGenerator();}
-setTimeout(function(){ document.getElementsByClassName("trends").addEventListener("mouseover", function(){
-  alert("prueba")
-}) }, 10000);
-
-
 renderStoredSearchTerms()
 trendsGenerator()
