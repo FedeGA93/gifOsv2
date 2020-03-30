@@ -18,8 +18,6 @@ function searchtext() {
   gifs = [];
   clearContainer();
   let searchTerm = document.getElementById("search").value;
-  console.log(searchTerm)
-
   if (searchTerm !== null) {
   fetch(
     `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${searchTerm}&limit=20&offset=0&rating=G&lang=en`
@@ -88,27 +86,28 @@ function clearContainer() {
 const set = new Set();
 function addSearchTerm(searchTerm) {
   set.add(searchTerm);
-  localStorage.setItem('searchTerms', JSON.stringify(Array.from(set)));
+ let test = localStorage.setItem('searchTerms', JSON.stringify(Array.from(set)));
   renderStoredSearchTerms();
+ 
 }
 function renderStoredSearchTerms() {
   let storedSearchTerms = localStorage.getItem('searchTerms');
   const father = document.querySelector('.hashtags');
   father.innerHTML = '';
+  if(storedSearchTerms !== null){
   JSON.parse(storedSearchTerms).forEach(item => {
     const buttonHash = document.createElement('button');
     buttonHash.classList.add('btn-hash');
     father.appendChild(buttonHash);
     buttonHash.innerHTML = ('#' + item);
     buttonHash.value = item;
-  });
+  })};
 }
 const populateRandomContainer = container =>
   function caspsule(myJson) {
     let id = myJson.data.id;
     let title = myJson.data.title;
     let url = `https://i.giphy.com/media/${id}/giphy.webp`;
-    console.log(url)
     createRandomGifBox(url, title)
   };
 
@@ -133,9 +132,11 @@ function createRandomGifBox(url, title) {
   container.appendChild(fig);
   document.getElementById('divSuggestions').appendChild(container);
   renderImg(url)
+  newImg.className = "positionRandomGif";
+
   const cross = document.createElement("img");
   cross.setAttribute("src", "img/close.svg")
-  cross.className= "cross"
+  cross.className= "cross";
   container.appendChild(cross)
   container.appendChild(newImg);
 }
@@ -148,5 +149,13 @@ function renderImg(url) {
   newImg.setAttribute("width", "280px");
 }
 for(i=0;i<4;i++){ randomSuggestionsGenerator();}
+
+
+  if(document.querySelector(".btn-hash") !== null){
+  const btnHashValue = document.querySelector(".btn-hash").value;
+  console.log(btnHashValue);
+  document.querySelector(".btn-hash").addEventListener("click", function useButtonHash() {
+    document.getElementById("search").innerText =  values;
+  })}
 renderStoredSearchTerms()
 trendsGenerator()

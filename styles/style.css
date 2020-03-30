@@ -310,11 +310,21 @@ input:focus~#btn {
     width: 144px;
     height: 36px;
 }
+.btn-color-red {
+    background-color: #FF6161;
+    color: #ffffff;
+}
+.btn-video.dark{
+    background: #EE3EFE;
 
+}
 .btn-video:disabled {
     background: #FFF4FD;
 }
-
+.btn-color-red.dark {
+    background-color: #FF6161;
+    color: #ffffff;
+}
 .container-video-btn {
     display: flex;
     justify-content: flex-end;
@@ -412,10 +422,7 @@ input:focus~#btn {
     transform: translateY(-104%);
 }
 
-.btn-color-red {
-    background-color: #FF6161;
-    color: #ffffff;
-}
+
 
 .transition {
     transform: translateY(-9%);
@@ -480,8 +487,7 @@ input:focus~#btn {
     transform: translate(4px,5px);
 }
 .trends:hover {
-    margin:0;
-    padding:0;
+  
     border: dotted 1px;
     background: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
@@ -493,10 +499,22 @@ input:focus~#btn {
 }
 .randomTextFig {
     display: block;
-    transform: translate(4px,1.2em);
+    transform: translate(5px,0.2em);}
+.positionRandomGif{
+    transform:translate(5px, -.65em);
+}
+.randomGif{    
+    background: #B4B4B4;
+    box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
+    width: 290px;
+    height: 312px;
+}
+.randomGif:hover{
+    border: dotted 1px;
+
 }
 .cross { 
-    transform: translate(16.6em, 3px);
+    transform: translate(16.6em, -13px);
     display: block;
 }
 .hide {

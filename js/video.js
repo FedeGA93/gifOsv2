@@ -4,7 +4,7 @@ const myGifosLocal = [];
 let all;
 let stream;
 let recorder;
-
+let id = [];
 async function stopRecordingCallback() {
     video.srcObject = null;
     let blob = await recorder.getBlob();
@@ -27,13 +27,13 @@ async function stopRecordingCallback() {
         });
         console.log(req);
         fetch(req)
-        .then(response => response.json())
-        .then(json => {
-            let id = json.data.id;
-            console.log(id)
-            addGif(id);
-          console.log('parsed json', json)
-        })
+            .then(response => response.json())
+            .then(json => {
+                id.push(json.data.id);
+                console.log(id)
+                storeGif(id);
+                console.log('parsed json', json)
+            })
             .catch(err => {
                 console.log("ERROR: ", err.message);
             });
@@ -41,7 +41,7 @@ async function stopRecordingCallback() {
 }
 
 function recordAgain() {
-    document.querySelector("#repeat").addEventListener("click", async function() {
+    document.querySelector("#repeat").addEventListener("click", async function () {
         clearLayout();
         videoLayout();
         video.srcObject = stream;
@@ -70,7 +70,7 @@ function startRecord() {
             });
             document
                 .querySelector("#btn-record")
-                .addEventListener("click", async function() {
+                .addEventListener("click", async function () {
 
                     midStep();
                     this.disabled = true;
@@ -90,7 +90,7 @@ function startRecord() {
                     recorder.stream = stream;
                     document
                         .querySelector("#btn-save")
-                        .addEventListener("click", async function() {
+                        .addEventListener("click", async function () {
                             await recorder.stopRecording();
                             recorder.stream.getTracks(t => t.stop());
                             finalStep();
@@ -185,13 +185,29 @@ function uploading() {
     }, 3000);
 };
 
-function addGif(id) {
-    localStorage.setItem('myGif', id);
+function storeGif(id) {
+    localStorage.setItem('myGifs', JSON.stringify(id));
     renderStoredGif();
-  }
-
-function renderStoredGif(){
-    oldId = localStorage.getItem('myGif')
 }
+function renderStoredGif() {
+    let storedId = localStorage.getItem('myGifs');
+    console.log(storedId)
+    const father = document.querySelector('#myLocalGifs');
+    father.innerHTML = '';
+    JSON.parse(storedId).forEach(item => {
+        const imgContainer = document.createElement('img');
+        let url = `https://i.giphy.com/media/${item}/giphy.webp`;
+        console.log(url)
+        imgContainer.setAttribute("src", url)
+        imgContainer.setAttribute("height", "280px");
+        imgContainer.setAttribute("width", "280px");
+        father.appendChild(imgContainer);
+    });
+    
+}
+function ready() {
+    document.querySelector("#ready").addEventListener("click", () => { renderStoredGif() })
+}
+ready();
 startRecord()
 recordAgain();
