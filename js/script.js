@@ -1,13 +1,18 @@
 let gifs = [];
 const api = "https://api.giphy.com/v1/gifs/";
-let botontest = document.getElementById("btn");
+let botonSearch = document.getElementById("btn");
 let all;
 
 const searchBar = document.querySelector('input[type="text"]');
-botontest.addEventListener("click", event => {
-  event.target;
+botonSearch.addEventListener("click", e => {
+  e.target;
   searchtext();
 });
+botonSearch.addEventListener("keypress", function (e) {
+  if (e.key === 'Enter') {
+    event.target;
+    searchtext();  }
+})
 
 function searchtext() {
   gifs = [];
@@ -17,7 +22,7 @@ function searchtext() {
 
   if (searchTerm !== null) {
   fetch(
-    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${searchTerm}&limit=8&offset=0&rating=G&lang=en`
+    `${api}search?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR&q=${searchTerm}&limit=20&offset=0&rating=G&lang=en`
   )
     .then(function (response) {
       return response.json();
@@ -36,7 +41,6 @@ const populateContainer = container =>
     gifs.forEach(element => {
       url = `https://i.giphy.com/media/${element.id}/giphy.webp`;
       title = element.title;
-      console.log(element)
       createGifBox(url, title)
      });
   };
@@ -104,16 +108,10 @@ const populateRandomContainer = container =>
     let id = myJson.data.id;
     let title = myJson.data.title;
     let url = `https://i.giphy.com/media/${id}/giphy.webp`;
-    newImg = document.createElement("img");
-    newImg.setAttribute("src",`https://i.giphy.com/media/${id}/giphy.webp`);
-    document.getElementById(container).appendChild(newImg);
-    newImg.setAttribute("height", "280px");
-    newImg.setAttribute("width", "280px");
-    newImg.setAttribute("title", title);
-    newImg.setAttribute("transform", "translate(17.8em, 1.8em)")
-    createGifBox(url, title)
-    
+    console.log(url)
+    createRandomGifBox(url, title)
   };
+
 
 function createGifBox(url, title) {
   const container = document.createElement('div')
@@ -122,16 +120,33 @@ function createGifBox(url, title) {
   fig.className = "textFig"
   fig.innerHTML= title;  
   document.getElementById('divContainer').appendChild(container)
-  newImg = document.createElement("img"),
-  newImg.setAttribute("src", url ),
+  renderImg(url);
   container.appendChild(newImg),
-  newImg.className = "position"
-  newImg.setAttribute("height", "280px"),
-  newImg.setAttribute("width", "280px"),
-  newImg.setAttribute("z-index", "1")
   container.appendChild(fig)    
   }
+function createRandomGifBox(url, title) {
+  const container = document.createElement('div');
+  container.className = "randomGif SquareBox";
+  const fig = document.createElement('figure');
+  fig.className = "textFig randomTextFig";
+  fig.innerHTML= title;  
+  container.appendChild(fig);
+  document.getElementById('divSuggestions').appendChild(container);
+  renderImg(url)
+  const cross = document.createElement("img");
+  cross.setAttribute("src", "img/close.svg")
+  cross.className= "cross"
+  container.appendChild(cross)
+  container.appendChild(newImg);
+}
 
+function renderImg(url) {
+  newImg = document.createElement("img");
+  newImg.setAttribute("src", url );
+  newImg.className = "position";
+  newImg.setAttribute("height", "280px");
+  newImg.setAttribute("width", "280px");
+}
 for(i=0;i<4;i++){ randomSuggestionsGenerator();}
 renderStoredSearchTerms()
 trendsGenerator()
