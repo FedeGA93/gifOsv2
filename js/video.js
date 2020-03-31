@@ -1,10 +1,10 @@
 const video = document.querySelector("video");
 const uploadURL = "http://upload.giphy.com/v1/gifs?api_key=5k0ncuBQ9e0JQau3FauPqVrzbWfJiqqR";
-const myGifosLocal = [];
 let all;
 let stream;
 let recorder;
-let id = [];
+let myGifosLocal = localStorage.getItem("myGifs");
+
 async function stopRecordingCallback() {
     video.srcObject = null;
     let blob = await recorder.getBlob();
@@ -29,10 +29,9 @@ async function stopRecordingCallback() {
         fetch(req)
             .then(response => response.json())
             .then(json => {
-                id.push(json.data.id);
+                let id = json.data.id;
                 console.log(id)
-                storeGif(id);
-                console.log('parsed json', json)
+                storedGifs(id);
             })
             .catch(err => {
                 console.log("ERROR: ", err.message);
@@ -184,30 +183,38 @@ function uploading() {
 
     }, 3000);
 };
+/* function saveStoredGifs(id) {
+    let storedIds = localStorage.getItem('storedGifs');
+    let localStorageIds = [];
+    if(storedIds !== null){
+    localStorageIds.push(JSON.parse(JSON.stringify(storedIds)))}
+    console.log(localStorageIds)
+    localStorageIds.push(id)
+    localStorage.setItem('storedGifs', JSON.stringify(localStorageIds));
+} */
 
-function storeGif(id) {
-    localStorage.setItem('myGifs', JSON.stringify(id));
-    renderStoredGif();
-}
-function renderStoredGif() {
-    let storedId = localStorage.getItem('myGifs');
+
+function renderStoredGifs() {
+    let storedId = localStorage.getItem('storedGifs');
     console.log(storedId)
     const father = document.querySelector('#myLocalGifs');
     father.innerHTML = '';
-    JSON.parse(storedId).forEach(item => {
-        const imgContainer = document.createElement('img');
-        let url = `https://i.giphy.com/media/${item}/giphy.webp`;
-        console.log(url)
-        imgContainer.setAttribute("src", url)
-        imgContainer.setAttribute("height", "280px");
-        imgContainer.setAttribute("width", "280px");
-        father.appendChild(imgContainer);
-    });
-    
+    if (storedId !== null) {
+        JSON.parse(storedId).forEach(id => {
+            const imgContainer = document.createElement('img');
+            let url = `https://i.giphy.com/media/${id}/giphy.webp`;
+            console.log(url)
+            imgContainer.setAttribute("src", url)
+            imgContainer.setAttribute("height", "280px");
+            imgContainer.setAttribute("width", "280px");
+            father.appendChild(imgContainer);
+        })
+    };
+
+
 }
-function ready() {
-    document.querySelector("#ready").addEventListener("click", () => { renderStoredGif() })
-}
-ready();
+
+window.onload = renderStoredGifs();
+
 startRecord()
 recordAgain();

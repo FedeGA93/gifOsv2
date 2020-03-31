@@ -32,7 +32,7 @@ function searchtext() {
   }else{alert("La busqueda está vacia")}
 }
 let newImg;
-let test
+
 const populateContainer = container =>
   function caspsule(myJson) {
     myJson.data.forEach(data => gifs.push(data));
@@ -86,7 +86,7 @@ function clearContainer() {
 const set = new Set();
 function addSearchTerm(searchTerm) {
   set.add(searchTerm);
- let test = localStorage.setItem('searchTerms', JSON.stringify(Array.from(set)));
+  localStorage.setItem('searchTerms', JSON.stringify(Array.from(set)));
   renderStoredSearchTerms();
  
 }
