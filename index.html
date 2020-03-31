@@ -22,7 +22,7 @@
     </div>
     <div class="flex">
       <div class="pad-right">
-        <button class="btn-windows98 "> <a href="misGifOs/record.html" class="anch"> Crear GifOs</a> </button>
+        <button class="btn-windows98 " onclick="window.location.href ='misGifOs/record.html'"> Crear GifOs </button>
       </div>
       <div class="flex dropdown pad-right">
         <button class="btn-windows98">Elegir Tema</button>
@@ -40,7 +40,7 @@
     </div>
   </nav>
   <section>
-    <main class="flex-window">
+    <div class="flex-window">
       <div class="windows-style">
         <div class="window-bar">
           <p class="margin-zero letter-color letter">Buscar:</p>
@@ -53,7 +53,7 @@
           </div>
         </div>
       </div>
-   </main>
+   </div>
   </section>
   <section class="flex-trendings">
     <div>
@@ -63,10 +63,11 @@
       <div id="divSuggestions" class="gif-content">
       </div>
       <div>
-        <input type="text" name="trend" id="trend" class="gnr-bar margin-flex padding-input" disabled placeholder="Tendencias:">
+        <input type="text" name="trend" id="trend" class="gnr-bar margin-flex padding-input" disabled placeholder="Tendencias:"/>
         <div class="gif-content" id="divContainer">
         </div>
       </div>
+    </div>
   </section>
   <script src="js/script.js"></script>
 </body>

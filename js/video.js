@@ -31,7 +31,7 @@ async function stopRecordingCallback() {
             .then(json => {
                 let id = json.data.id;
                 console.log(id)
-                storedGifs(id);
+                storeGifId(id);
             })
             .catch(err => {
                 console.log("ERROR: ", err.message);
@@ -183,15 +183,15 @@ function uploading() {
 
     }, 3000);
 };
-/* function saveStoredGifs(id) {
+function storeGifId(id) {
     let storedIds = localStorage.getItem('storedGifs');
     let localStorageIds = [];
     if(storedIds !== null){
-    localStorageIds.push(JSON.parse(JSON.stringify(storedIds)))}
-    console.log(localStorageIds)
+        localStorageIds = JSON.parse(storedIds);
+    }
     localStorageIds.push(id)
     localStorage.setItem('storedGifs', JSON.stringify(localStorageIds));
-} */
+}
 
 
 function renderStoredGifs() {

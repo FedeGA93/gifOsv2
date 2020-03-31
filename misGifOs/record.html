@@ -18,8 +18,8 @@
             <div class="flex dropdown pad-right">
                 <button class="btn-windows98">Elegir Tema</button>
                 <button class="btn-windows98 img-btn">
-          <img src="/img/dropdown.svg" id="arrow" alt="Menu dropdown arrow" />
-        </button>
+                    <img src="/img/dropdown.svg" id="arrow" alt="Menu dropdown arrow" />
+                </button>
                 <div class="dropdown-content btn-depl">
                     <button class="btn-theme" id="light-theme">Sailor Day</button>
                     <button class="btn-theme" id="dark-theme">Sailor Night</button>
@@ -42,12 +42,14 @@
                             </div>
                             <div>
                                 <p>
-                                    Crear tu guifo es muy fácil, graba cualquier imagen con tu cámara y obtén guifos personalizados. Los pasos para crear tu guifo son:
+                                    Crear tu guifo es muy fácil, graba cualquier imagen con tu cámara y obtén guifos
+                                    personalizados. Los pasos para crear tu guifo son:
                                     <br />
                                     <b>1)</b> Dar permisos de acceso a la cámara (sólo por el tiempo de uso) <br />
                                     <b>2)</b> Capturar tu momento guifo <br />
                                     <b>3)</b> Revisar el momento <br />
-                                    <b>4)</b> Listo para subir y compartir! <br /> ¿Quieres comenzar a crear tu <b>guifo</b> ahora?
+                                    <b>4)</b> Listo para subir y compartir! <br /> ¿Quieres comenzar a crear tu
+                                    <b>guifo</b> ahora?
                                 </p>
                             </div>
                         </div>
@@ -72,9 +74,13 @@
                     <button class="btn-video">Capturar</button>
                 </div>
                 <div id="btn-save" class="hide">
-                    <input type="text" id="time-input" value="" class="timer" disabled>
-                    <button class="btn-video img-btn btn-color-red "><img src="/img/recording.svg"
-              alt="Comenzar a grabar"></button>
+                    <div class="timerContainer">
+                        <input type="text" id="time-input" value="00:01:30" class="timer" disabled>
+                        <img src="" alt="">
+                    </div>
+                    <button class="btn-video img-btn btn-color-red ">
+                        <img src="/img/recording.svg" alt="Comenzar a grabar">
+                    </button>
                     <button class="btn-video btn-color-red ">Listo</button>
                 </div>
                 <div class="hide" id="final-step">
@@ -97,20 +103,22 @@
                     </div>
                     <div class="guifo-create">
                         <h1>Guifo creado con éxito</h1>
-                            <button class="btn-video btn-resize" id="copiar">Copiar Enlace Guifo</button>
-                            <button class="btn-video btn-resize">Descargar Guifo</button>
+                        <button class="btn-video btn-resize" id="copiar" disabled>Copiar Enlace Guifo</button>
+                        <button class="btn-video btn-resize" disabled>Descargar Guifo</button>
                         <div>
-                            <button class="btn-video ready-btn" id="ready">Listo</button>
+                            <button class="btn-video ready-btn" id="ready" onclick="history.go(0);">Listo</button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </section>
-    <section>
+    <section id="myGifos">
         <div>
-            <input type="text" id="myGifos-bar" class="gnr-bar margin-flex padding-input" disabled placeholder="Mis Guifos:" />
-            <div>
-                <div id="myLocalGifs">
+            <input type="text" id="myGifos-bar" class="gnr-bar margin-flex padding-input" disabled
+                placeholder="Mis Guifos:" />
+            <div class="flex-trendings">
+                <div id="myLocalGifs" class="gif-content">
                 </div>
             </div>
         </div>
