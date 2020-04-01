@@ -57,10 +57,11 @@
     background: #e6bbe2;
     border: 1px solid #110038;
 }
-.srch-btn:active.dark{
-    background: #EE3EFE;
 
+.srch-btn:active.dark {
+    background: #EE3EFE;
 }
+
 .letter {
     font-family: "ChakraPetch", Bold;
     font-size: 14px;
@@ -211,9 +212,7 @@ input:focus~#btn {
 .btn-more {
     margin: 0;
     padding: 0;
-    right: 18em;
     position: relative;
-    bottom: 1em;
     background: #4180f6;
     border: 1px solid #4c2f99;
     box-shadow: inset -2px -2px 0 0 #284f99, inset 2px 2px 0 0 #ffffff;
@@ -224,6 +223,7 @@ input:focus~#btn {
     letter-spacing: 0;
     text-align: center;
     line-height: 18px;
+    transform: translate(1em, -4em);
 }
 
 .pad-right {
@@ -310,21 +310,25 @@ input:focus~#btn {
     width: 144px;
     height: 36px;
 }
+
 .btn-color-red {
     background-color: #FF6161;
     color: #ffffff;
 }
-.btn-video.dark{
-    background: #EE3EFE;
 
+.btn-video.dark {
+    background: #EE3EFE;
 }
+
 .btn-video:disabled {
     background: #FFF4FD;
 }
+
 .btn-color-red.dark {
     background-color: #FF6161;
     color: #ffffff;
 }
+
 .container-video-btn {
     display: flex;
     justify-content: flex-end;
@@ -422,8 +426,6 @@ input:focus~#btn {
     transform: translateY(-104%);
 }
 
-
-
 .transition {
     transform: translateY(-9%);
 }
@@ -467,62 +469,74 @@ input:focus~#btn {
     width: 48em;
     height: 25em;
 }
+
 .window-bar.dark {
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
+
 .top-bar.dark {
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
+
 .textFig {
     display: none;
-    transform: translate(4px,-19px);
+    transform: translate(4px, -19px);
     margin: 0;
     background-image: linear-gradient(270deg, #F7C9F3 0%, #4180F6 100%);
     color: #FFFFFF;
     width: 281px;
     height: 19px;
 }
+
 .textFig.dark {
     background-image: linear-gradient(270deg, #EE3EFE 0%, #2E32FB 100%);
 }
-.position{
-    transform: translate(4px,5px);
+
+.position {
+    transform: translate(4px, 5px);
 }
+
 .trends:hover {
-  
     border: dotted 1px;
     background: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
     width: 290px;
     height: 292px;
 }
-.trends:hover figure{
+
+.trends:hover figure {
     display: block;
 }
+
 .randomTextFig {
     display: block;
-    transform: translate(5px,0.2em);}
-.positionRandomGif{
-    transform:translate(5px, -.65em);
+    transform: translate(5px, 0.2em);
 }
-.randomGif{    
+
+.positionRandomGif {
+    transform: translate(5px, -.65em);
+}
+
+.randomGif {
     background: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
     width: 290px;
     height: 312px;
 }
-.randomGif:hover{
-    border: dotted 1px;
 
+.randomGif:hover button {
+    border: dotted 1px;
 }
-.cross { 
+
+.cross {
     transform: translate(16.6em, -13px);
     display: block;
 }
+
 .timerContainer {
     transform: translateX(-18.9em);
-
 }
+
 .hide {
     display: none;
 }

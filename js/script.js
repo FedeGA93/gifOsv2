@@ -2,6 +2,7 @@ let gifs = [];
 const api = "https://api.giphy.com/v1/gifs/";
 let botonSearch = document.getElementById("btn");
 let all;
+const trends = document.getElementById("trend");
 
 const searchBar = document.querySelector('input[type="text"]');
 botonSearch.addEventListener("click", e => {
@@ -30,6 +31,7 @@ function searchtext() {
   document.getElementById("trend").value = searchTerm;
   addSearchTerm(searchTerm);
   }else{alert("La busqueda está vacia")}
+  trends.scrollIntoView(true);
 }
 let newImg;
 
@@ -133,12 +135,16 @@ function createRandomGifBox(url, title) {
   document.getElementById('divSuggestions').appendChild(container);
   renderImg(url)
   newImg.className = "positionRandomGif";
-
   const cross = document.createElement("img");
   cross.setAttribute("src", "img/close.svg")
   cross.className= "cross";
-  container.appendChild(cross)
+  const btnMore = document.createElement("button");
+  btnMore.className ="btn-more";
+  btnMore.innerText = "Ver más";
+  container.appendChild(cross);
   container.appendChild(newImg);
+  container.appendChild(btnMore)
+
 }
 
 function renderImg(url) {
