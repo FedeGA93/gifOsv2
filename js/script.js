@@ -151,8 +151,8 @@ function renderImg(url) {
   newImg = document.createElement("img");
   newImg.setAttribute("src", url );
   newImg.className = "position";
-  newImg.setAttribute("height", "280px");
-  newImg.setAttribute("width", "280px");
+  newImg.setAttribute("height", "250px");
+  newImg.setAttribute("width", "250px");
 }
 for(i=0;i<4;i++){ randomSuggestionsGenerator();}
 
