@@ -101,7 +101,7 @@ input:focus~#btn {
     border: 1px solid #e6bbe2;
     box-shadow: inset -2px -2px 0 0 #e6dce4, inset 2px 2px 0 0 #80687d;
     height: 2.3em;
-    width: 64.7vw;
+    width: 94em;
     color: #000000;
 }
 
@@ -141,8 +141,8 @@ input:focus~#btn {
 .gif-content {
     display: flex;
     flex-flow: row wrap;
-    max-width: fit-content;
-    padding-left: 4em;
+    padding-left: 23em;
+    padding-right: 11em;
 }
 
 .margin-flex {
@@ -417,8 +417,9 @@ input:focus~#btn {
 
 .btnPadding {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding-left: 0.1em;
+    transform: translateX(-33.8em);
 }
 
 .videoNorm {
@@ -496,18 +497,19 @@ input:focus~#btn {
     transform: translate(4px, 5px);
 }
 
-/* revisar  */
 .trends:hover {
+    display: block;
     border: dotted 1px;
     background: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
-    width: 252px;
-    height: 254px;
+    width: 18.2em;
+    height: 18.5em;
+    margin:.3em;
 }
 
-.trends:hover figure {
+ .trends:hover figure {
     display: block;
-}
+} 
 
 .randomTextFig {
     display: block;
@@ -539,20 +541,80 @@ input:focus~#btn {
 }
 
 .btn-fixed {
-    display: hide;
+    display: flex;
+    width: 93em;
     border: 1px solid #110038;
     background: #CCCCCC;
     border: 1px solid #808080;
     box-shadow: inset -1px -1px 0 0 #B4B4B4, inset 1px 1px 0 0 #FFFFFF;
+    height: 3em;
+    margin-bottom: 2px;
+    transform: translate(4px, 6px);
+
 }
 
 .btnFixedContainer {
-    display: hide;
+    display: none;
+    z-index: 1;
+    position: absolute;
     flex-flow: column nowrap;
     background: #B4B4B4;
     box-shadow: inset -2px -2px 0 0 #8F8F8F, inset 2px 2px 0 0 #FFFFFF;
+    width: 78em;
+    height: 8.4em;
+    transform: translate(-6px, 3.3em);
+}
+
+input:focus~.btnFixedContainer {
+    display: block;
+}
+
+.img-size {
+    width: 17.5rem;
+    height: 17.8rem;
+}
+.guifoContent { 
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .hide {
     display: none;
+}
+
+@media (max-width: 1600px) {
+    .randomGif {
+        width: 18.2em;
+        height: 20em;
+    }
+    .gif-content {
+        padding-left: 10em;
+        padding-right: 1em;
+        max-width: inherit;
+    }
+    .srch-btn {
+        width: 5em;
+    }
+    .textFig {
+        width: 281px;
+    }
+    .trends:focus {
+            display: block;
+            border: dotted 1px;
+            background: #B4B4B4;
+            box-shadow: inset -2px -2px 0 0 #5C5C5C, inset 2px 2px 0 0 #FFFFFF;
+            width: 18.2em;
+            height: 18.5em;
+            margin:.3em;
+    }
+    .btnPadding{
+        transform: translateX(-24em);
+    }
+  .btnFixedContainer {
+    width: 58.6em;
+  }
+  .btn-fixed{
+    width: 69.6em;
+
+  }
 }

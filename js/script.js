@@ -134,7 +134,7 @@ function createRandomGifBox(url, title) {
   container.appendChild(fig);
   document.getElementById('divSuggestions').appendChild(container);
   renderImg(url)
-  newImg.className = "positionRandomGif";
+  newImg.className = "positionRandomGif img-size";
   const cross = document.createElement("img");
   cross.setAttribute("src", "img/close.svg")
   cross.className= "cross";
@@ -150,9 +150,8 @@ function createRandomGifBox(url, title) {
 function renderImg(url) {
   newImg = document.createElement("img");
   newImg.setAttribute("src", url );
-  newImg.className = "position";
-  newImg.setAttribute("height", "250px");
-  newImg.setAttribute("width", "250px");
+  newImg.className = "position img-size";
+
 }
 for(i=0;i<4;i++){ randomSuggestionsGenerator();}
 

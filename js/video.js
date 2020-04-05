@@ -120,7 +120,7 @@ document
 function videoLayout() {
     document.querySelector("#video").classList.remove("hide");
     document.querySelector("#text-box").classList.add("hide");
-    document.querySelector("#myGifos-bar").classList.add("hide");
+    document.querySelector("#myGifos").classList.add("hide");
     document.querySelector("#window-txt").innerHTML = "Un Chequeo Antes de Empezar";
     document.querySelector("#windowContainer").classList.remove("square-windows");
     document.querySelector("#windowContainer").classList.add("newSize");
@@ -133,6 +133,8 @@ function menuLayout() {
     document.querySelector("#video").classList.add("hide");
     document.querySelector("#text-box").classList.remove("hide");
     document.querySelector("#myGifos-bar").classList.remove("hide");
+    document.querySelector("#miGifos").classList.add("hide");
+
 }
 
 function midStep() {
@@ -181,7 +183,7 @@ function uploading() {
         document.querySelector("#gif-uploaded").classList.add("gif-preview");
         document.querySelector("#windowContainer").classList.add("window-resize")
 
-    }, 3000);
+    }, 13000);
 };
 function storeGifId(id) {
     let storedIds = localStorage.getItem('storedGifs');
@@ -205,8 +207,7 @@ function renderStoredGifs() {
             let url = `https://i.giphy.com/media/${id}/giphy.webp`;
             console.log(url)
             imgContainer.setAttribute("src", url)
-            imgContainer.setAttribute("height", "280px");
-            imgContainer.setAttribute("width", "280px");
+            imgContainer.className =" img-size";
             father.appendChild(imgContainer);
         })
     };
