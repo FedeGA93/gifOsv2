@@ -318,6 +318,7 @@ input:focus~#btn {
 
 .btn-video.dark {
     background: #EE3EFE;
+    color:#ffffff;
 }
 
 .btn-video:disabled {
@@ -537,7 +538,7 @@ input:focus~#btn {
 }
 
 .timerContainer {
-    transform: translateX(-18.9em);
+    transform: translateX(-0.9em);
 }
 
 .btn-fixed {
@@ -577,11 +578,22 @@ input:focus~.btnFixedContainer {
     display: flex;
     flex-flow: row wrap;
 }
+.progressBar {
+    width:18em;
+}
+.secondary.dark{
+background: #110038;
+border: 1px solid #B4B4B4;
+box-shadow: inset -1px -1px 0 0 #5C5C5C, inset 1px 1px 0 0 #FFF4FD;
+color: #FFFFFF;
+}
+.secondary:active.dark{
+    border: 1px solid #FFFFFF;
+}
 
 .hide {
     display: none;
 }
-
 @media (max-width: 1600px) {
     .randomGif {
         width: 18.2em;

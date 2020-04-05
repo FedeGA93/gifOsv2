@@ -76,7 +76,8 @@
                 <div id="btn-save" class="hide">
                     <div class="timerContainer">
                         <input type="text" id="time-input"  value="00:01:30" class="timer padding-input" disabled>
-                        <img src="" alt="">
+                        <progress max="100" class="progressBar"></progress>
+                        
                     </div>
                     <button class="btn-video img-btn btn-color-red ">
                         <img src="../img/recording.svg" alt="Comenzar a grabar">
@@ -84,13 +85,14 @@
                     <button class="btn-video btn-color-red ">Listo</button>
                 </div>
                 <div class="hide" id="final-step">
-                    <button class="btn-video" id="repeat">Repetir Captura</button>
-                    <button class="btn-video" id="upload">Subir Guifo</button>
+                    <button class="btn-video secondary" id="repeat">Repetir Captura</button>
+                    <button class="btn-video secondary" id="upload">Subir Guifo</button>
                 </div>
                 <div id="uploading" class="waitContainer whiteBackground transition hide">
                     <div class="waitChild">
                         <img src="../img/globe_img.png" alt="Globo terraqueo">
                         <p class="wait-title">Estamos subiendo tu guifo…</p>
+                        <progress max="100" class="progressBar"></progress>
                         <p class="wait">Tiempo restante: <s>38 años</s> algunos minutos</p>
                     </div>
                     <div class="waitButton">
@@ -123,7 +125,7 @@
             </div>
         </div>
     </section>
-    <script src="/js/video.js"></script>
+    <script src="../js/video.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/RecordRTC/5.5.8/RecordRTC.js"></script>
 </body>
 

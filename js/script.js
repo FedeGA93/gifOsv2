@@ -69,14 +69,14 @@ document.getElementById("dark-theme").addEventListener("click", function classTo
   for (let i = 0; i < all.length; i++) {
     all[i].classList.add("dark");
   }
-  document.getElementById("logo").src = "/img/gifOF_logo_dark.png";
+  document.getElementById("logo").src = "./img/gifOF_logo_dark.png";
 });
 document.getElementById("light-theme").addEventListener("click", function classDelete() {
   all = document.getElementsByTagName("*");
   for (let i = 0; i < all.length; i++) {
     all[i].classList.remove("dark");
   }
-  document.getElementById("logo").src = "/img/gifOF_logo.png";
+  document.getElementById("logo").src = "./img/gifOF_logo.png";
 });
 
 

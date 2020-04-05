@@ -105,7 +105,7 @@ document
         for (let i = 0; i < all.length; i++) {
             all[i].classList.add("dark");
         }
-        document.querySelector("#logo").src = "/img/gifOF_logo_dark.png";
+        document.querySelector("#logo").src = "../img/gifOF_logo_dark.png";
     });
 document
     .querySelector("#light-theme")
@@ -114,7 +114,7 @@ document
         for (let i = 0; i < all.length; i++) {
             all[i].classList.remove("dark");
         }
-        document.querySelector("#logo").src = "/img/gifOF_logo.png";
+        document.querySelector("#logo").src = "../img/gifOF_logo.png";
     });
 
 function videoLayout() {
